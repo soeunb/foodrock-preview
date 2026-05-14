@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정성담은 가치와 품격을 드리는 도시락 - 푸드락</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    color: #1f2a24;
+    background: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .fr-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid #eee;
+  }
+
+  .fr-header-inner {
+    max-width: 1280px;
+    height: 72px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .fr-logo img {
+    width: 180px;
+    height: auto;
+    display: block;
+  }
+
+  .fr-nav {
+    display: flex;
+    gap: 20px;
+
+    font-size: 15px;
+    font-weight: 700;
+    color: #1f2a24;
+  }
+
+  .fr-section {
+    padding: 100px 24px;
+  }
+
+  .fr-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .fr-title {
+    margin-bottom: 44px;
+  }
+
+  .fr-title span {
+    display: block;
+    margin-bottom: 12px;
+
+    color: #123d2b;
+    font-weight: 800;
+    letter-spacing: .08em;
+  }
+
+  .fr-title h2 {
+    margin: 0;
+
+    font-size: 40px;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+  }
+
+  .fr-title p {
+    margin: 16px 0 0;
+
+    color: #66736b;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .fr-about {
+    padding-top: 120px;
+    background: #f7f8f5;
+  }
+
+  .fr-about-box {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .fr-about-text {
+    font-size: 19px;
+    line-height: 1.9;
+    color: #3d4a42;
+  }
+
+  .fr-about-img {
+    border-radius: 28px;
+    overflow: hidden;
+  }
+
+  .fr-about-img img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .fr-special-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .fr-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .fr-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  .fr-card {
+    overflow: hidden;
+    border-radius: 20px;
+
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+
+    transition: .25s;
+  }
+
+  .fr-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  }
+
+  .fr-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .fr-card-body {
+    padding: 18px;
+  }
+
+  .fr-card-body h3 {
+    margin: 0 0 10px;
+
+    font-size: 20px;
+    letter-spacing: -0.03em;
+  }
+
+  .fr-card-body p {
+    margin: 0;
+
+    color: #66736b;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  .fr-price {
+    margin-top: 14px;
+
+    color: #123d2b;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .fr-menu {
+    background: #f7f8f5;
+  }
+
+  .fr-tabs {
+    display: flex;
+    gap: 12px;
+
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .fr-tabs button {
+    border: 1px solid #123d2b;
+    background: #fff;
+    color: #123d2b;
+
+    border-radius: 999px;
+    padding: 13px 24px;
+
+    font-weight: 800;
+    font-family: inherit;
+
+    cursor: pointer;
+  }
+
+  .fr-tabs button.active {
+    background: #123d2b;
+    color: #fff;
+  }
+
+  .fr-tab-content {
+    display: none;
+  }
+
+  .fr-tab-content.active {
+    display: grid;
+  }
+
+  .fr-delivery-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .fr-info-box {
+    padding: 30px 22px;
+
+    border-radius: 22px;
+    background: #f7f8f5;
+  }
+
+  .fr-info-box strong {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    color: #123d2b;
+  }
+
+  .fr-info-box p {
+    margin: 0;
+
+    color: #66736b;
+    line-height: 1.6;
+  }
+
+  /* 계산기 */
+
+  .fr-calc-section {
+    background: #fff;
+  }
+
+  .fr-calc-box {
+    padding: 40px;
+
+    border-radius: 28px;
+    background: #f7f8f5;
+  }
+
+  .fr-calc-row {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 20px;
+  }
+
+  .fr-calc-field label {
+    display: block;
+    margin-bottom: 12px;
+
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .fr-calc-field select,
+  .fr-calc-field input {
+    width: 100%;
+    height: 58px;
+
+    border: 1px solid #dcded9;
+    border-radius: 16px;
+
+    padding: 0 18px;
+
+    background: #fff;
+
+    font-size: 18px;
+    font-family: inherit;
+  }
+
+  .fr-calc-result {
+    margin-top: 28px;
+    padding: 28px;
+
+    border-radius: 20px;
+    background: #fff;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .fr-calc-price span {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #66736b;
+    font-size: 14px;
+  }
+
+  .fr-calc-price strong {
+    color: #123d2b;
+    font-size: 42px;
+    letter-spacing: -0.04em;
+  }
+
+  .fr-calc-notice {
+    margin-top: 20px;
+
+    color: #7b847f;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .fr-calc-contact {
+    margin-top: 28px;
+    padding: 28px 32px;
+
+    border-radius: 24px;
+    background: #f7f8f5;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .fr-calc-contact-text strong {
+    display: block;
+    margin-bottom: 10px;
+
+    font-size: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .fr-calc-contact-text p {
+    margin: 0;
+
+    color: #66736b;
+    font-size: 16px;
+  }
+
+  .fr-calc-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 180px;
+    height: 58px;
+
+    border-radius: 999px;
+
+    background: #123d2b;
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .fr-contact {
+    background: #123d2b;
+    color: #fff;
+
+    text-align: center;
+  }
+
+  .fr-contact h2 {
+    margin: 0;
+
+    font-size: 40px;
+    letter-spacing: -0.04em;
+  }
+
+  .fr-contact p {
+    margin: 18px 0 0;
+
+    font-size: 18px;
+    opacity: .86;
+  }
+
+  .fr-contact-buttons {
+    margin-top: 34px;
+
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .fr-contact-buttons a {
+    padding: 15px 28px;
+
+    border-radius: 999px;
+
+    font-weight: 800;
+
+    background: #fff;
+    color: #123d2b;
+  }
+
+  .fr-contact-buttons a.outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.5);
+  }
+
+  @media (max-width: 1024px) {
+
+    .fr-special-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fr-grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fr-grid-5 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fr-delivery-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+  }
+
+  @media (max-width: 768px) {
+
+    .fr-header-inner {
+      height: 64px;
+      padding: 0 20px;
+    }
+
+    .fr-logo img {
+      width: 130px;
+    }
+
+    .fr-nav {
+      gap: 16px;
+
+      overflow-x: auto;
+      white-space: nowrap;
+
+      font-size: 14px;
+    }
+
+    .fr-section {
+      padding: 68px 20px;
+    }
+
+    .fr-about {
+      padding-top: 80px;
+    }
+
+    .fr-title h2,
+    .fr-contact h2 {
+      font-size: 30px;
+    }
+
+    .fr-about-box,
+    .fr-special-grid,
+    .fr-grid-4,
+    .fr-grid-5,
+    .fr-delivery-list {
+      grid-template-columns: 1fr;
+    }
+
+    .fr-calc-box {
+      padding: 24px;
+    }
+
+    .fr-calc-row {
+      grid-template-columns: 1fr;
+    }
+
+    .fr-calc-result {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .fr-calc-price strong {
+      font-size: 34px;
+    }
+
+    .fr-calc-unit strong {
+      font-size: 24px;
+    }
+
+    .fr-calc-contact {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .fr-calc-call {
+      width: 100%;
+    }
+
+  }
+  </style>
+</head>
+
+<body>
+
+<header class="fr-header">
+  <div class="fr-header-inner">
+    <a href="#top" class="fr-logo"><img src="web/upload/foodrock/logo.png" alt="푸드락"></a>
+
+    <nav class="fr-nav">
+      <a href="#about">회사소개</a>
+      <a href="#menu">도시락메뉴</a>
+      <a href="#delivery">배송안내</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section id="about" class="fr-section fr-about">
+    <div class="fr-inner">
+      <div class="fr-about-box">
+        <div>
+          <div class="fr-title">
+            <span>ABOUT FOODROCK</span>
+            <h2>정성과 품격을 담은<br>도시락 전문 브랜드</h2>
+            <p>기업 행사, 단체 모임, 세미나, 가족 행사까지 푸드락이 품격 있는 도시락을 준비합니다.</p>
+          </div>
+          <div class="fr-about-text">
+            푸드락은 신선한 재료와 정갈한 구성으로 다양한 행사와 모임에 어울리는 도시락을 제공합니다.
+            한 끼의 만족을 넘어, 받는 분에게 좋은 인상을 남길 수 있도록 메뉴 구성과 포장까지 세심하게 준비합니다.
+          </div>
+        </div>
+        <div class="fr-about-img">
+          <img src="/web/upload/foodrock/about.jpg" alt="푸드락 도시락">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="special" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-title">
+        <span>FOODROCK SPECIAL</span>
+        <h2>푸드락 스페셜 메뉴</h2>
+        <p>중요한 자리와 단체 주문에 어울리는 대표 메뉴입니다.</p>
+      </div>
+
+      <div class="fr-special-grid">
+        <div class="fr-card">
+          <img src="/web/upload/foodrock/special01.jpg" alt="스페셜 도시락 1">
+          <div class="fr-card-body">
+            <h3>스페셜 도시락 1</h3>
+            <p>정갈한 구성과 든든한 메뉴가 어우러진 인기 도시락입니다.</p>
+            <div class="fr-price">6,500원</div>
+          </div>
+        </div>
+
+        <div class="fr-card">
+          <img src="/web/upload/foodrock/special02.jpg" alt="스페셜 도시락 2">
+          <div class="fr-card-body">
+            <h3>스페셜 도시락 2</h3>
+            <p>행사와 세미나에 잘 어울리는 고급형 구성입니다.</p>
+            <div class="fr-price">6,500원</div>
+          </div>
+        </div>
+
+        <div class="fr-card">
+            <img src="/web/upload/foodrock/special03.jpg" alt="스페셜 도시락 3">
+            <div class="fr-card-body">
+            <h3>스페셜 도시락 3</h3>
+            <p>푸짐함과 품격을 함께 담은 프리미엄 도시락입니다.</p>
+            <div class="fr-price">6,500원</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <section class="fr-section fr-calc-section">
+
+  <div class="fr-inner">
+
+    <div class="fr-title">
+      <span>ORDER CALCULATOR</span>
+      <h2>단체 주문 계산기</h2>
+      <p>
+        원하는 도시락 메뉴와 수량을 선택하면
+        예상 주문 금액을 바로 확인할 수 있습니다.
+      </p>
+    </div>
+
+    <div class="fr-calc-box">
+
+      <div class="fr-calc-row">
+
+        <div class="fr-calc-field">
+          <label>메뉴 선택</label>
+
+          <select id="menuSelect">
+            <option value="9000">일반 도시락 · 9,000원</option>
+            <option value="10000">웰빙 도시락 · 10,000원</option>
+            <option value="12000">제육 도시락 · 12,000원</option>
+            <option value="13000">소불고기 도시락 · 13,000원</option>
+            <option value="15000">프리미엄 도시락 · 15,000원</option>
+          </select>
+        </div>
+
+        <div class="fr-calc-field">
+          <label>주문 수량</label>
+
+          <input
+            type="number"
+            id="quantityInput"
+            value="30"
+            min="1"
+          >
+        </div>
+
+      </div>
+
+      <div class="fr-calc-result">
+
+        <div class="fr-calc-price">
+          <span>예상 주문 금액</span>
+          <strong id="totalPrice">270,000원</strong>
+        </div>
+
+      </div>
+
+      <p class="fr-calc-notice">
+        ※ 실제 금액은 메뉴 구성, 배송 지역, 주문 수량에 따라 달라질 수 있습니다.
+      </p>
+
+    </div>
+
+    <div class="fr-calc-contact">
+
+      <div class="fr-calc-contact-text">
+        <strong>다양한 구성이나 맞춤 견적이 필요하신가요?</strong>
+        <p>전화 문의 주시면 친절히 상담해드립니다.</p>
+      </div>
+
+      <a href="tel:000-0000-0000" class="fr-calc-call">
+        전화 문의
+      </a>
+
+    </div>
+
+  </div>
+
+  </section>
+    
+
+  <section id="recommend" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-title">
+        <span>RECOMMEND</span>
+        <h2>추천 도시락</h2>
+      </div>
+
+      <div class="fr-grid-5">
+        <div class="fr-card"><img src="/web/upload/foodrock/recommend01.jpg" alt=""><div class="fr-card-body"><h3>웰빙 도시락</h3><div class="fr-price">22,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/recommend02.jpg" alt=""><div class="fr-card-body"><h3>고급 도시락</h3><div class="fr-price">22,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/recommend03.jpg" alt=""><div class="fr-card-body"><h3>소불고기 정식 도시락</h3><div class="fr-price">11,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/recommend04.jpg" alt=""><div class="fr-card-body"><h3>제육 정식 도시락</h3><div class="fr-price">9,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/recommend05.jpg" alt=""><div class="fr-card-body"><h3>일반 정식 도시락</h3><div class="fr-price">8,000원</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="fr-section fr-menu">
+    <div class="fr-inner">
+      <div class="fr-title">
+        <span>MENU</span>
+        <h2>전체 메뉴</h2>
+        <p>카테고리별 도시락 메뉴를 확인해보세요.</p>
+      </div>
+
+      <div class="fr-tabs">
+        <button type="button" class="active" data-tab="tab01">통도시락</button>
+        <button type="button" data-tab="tab02">스탠다드</button>
+        <button type="button" data-tab="tab03">스페셜</button>
+      </div>
+
+      <div id="tab01" class="fr-tab-content fr-grid-4 active">
+        <div class="fr-card"><img src="/web/upload/foodrock/menu01.jpg" alt=""><div class="fr-card-body"><h3>통도시락 1</h3><div class="fr-price">6,500원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu02.jpg" alt=""><div class="fr-card-body"><h3>통도시락 2</h3><div class="fr-price">6,500원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu03.jpg" alt=""><div class="fr-card-body"><h3>통도시락 3</h3><div class="fr-price">6,500원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu04.jpg" alt=""><div class="fr-card-body"><h3>통도시락 4</h3><div class="fr-price">6,500원</div></div></div>
+      </div>
+
+      <div id="tab02" class="fr-tab-content fr-grid-4">
+        <div class="fr-card"><img src="/web/upload/foodrock/menu05.jpg" alt=""><div class="fr-card-body"><h3>스탠다드 1</h3><div class="fr-price">8,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu06.jpg" alt=""><div class="fr-card-body"><h3>스탠다드 2</h3><div class="fr-price">9,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu07.jpg" alt=""><div class="fr-card-body"><h3>스탠다드 3</h3><div class="fr-price">9,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu08.jpg" alt=""><div class="fr-card-body"><h3>스탠다드 4</h3><div class="fr-price">11,000원</div></div></div>
+      </div>
+
+      <div id="tab03" class="fr-tab-content fr-grid-4">
+        <div class="fr-card"><img src="/web/upload/foodrock/menu09.jpg" alt=""><div class="fr-card-body"><h3>스페셜 1</h3><div class="fr-price">22,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu10.jpg" alt=""><div class="fr-card-body"><h3>스페셜 2</h3><div class="fr-price">22,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu11.jpg" alt=""><div class="fr-card-body"><h3>스페셜 3</h3><div class="fr-price">22,000원</div></div></div>
+        <div class="fr-card"><img src="/web/upload/foodrock/menu12.jpg" alt=""><div class="fr-card-body"><h3>스페셜 4</h3><div class="fr-price">50,000원~</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="delivery" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-title">
+        <span>DELIVERY</span>
+        <h2>배송안내</h2>
+      </div>
+
+      <div class="fr-delivery-list">
+        <div class="fr-info-box"><strong>단체 주문</strong><p>기업, 행사, 세미나 등 단체 주문이 가능합니다.</p></div>
+        <div class="fr-info-box"><strong>예약 주문</strong><p>원하는 날짜와 시간에 맞춰 준비해드립니다.</p></div>
+        <div class="fr-info-box"><strong>배송 지역</strong><p>배송 가능 지역은 주문 수량과 위치에 따라 안내드립니다.</p></div>
+        <div class="fr-info-box"><strong>문의 상담</strong><p>메뉴 구성과 예산에 맞춘 상담이 가능합니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fr-section fr-contact">
+    <div class="fr-inner">
+      <h2>푸드락 도시락 문의</h2>
+      <p>단체 주문, 행사 도시락, 배송 가능 여부를 문의해주세요.</p>
+
+      <div class="fr-contact-buttons">
+        <a href="tel:000-0000-0000">전화 문의</a>
+        <a href="#" class="outline">카카오톡 문의</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  var navLinks = document.querySelectorAll('.fr-nav a, .fr-btn');
+
+  for (var i = 0; i < navLinks.length; i++) {
+    navLinks[i].onclick = function(e) {
+
+      if (e.preventDefault) {
+        e.preventDefault();
+      } else {
+        e.returnValue = false;
+      }
+
+      var href = this.getAttribute('href');
+
+      if (!href || href.charAt(0) !== '#') {
+        return true;
+      }
+
+      var target = document.querySelector(href);
+
+      if (target) {
+        var header = document.querySelector('.fr-header');
+        var headerHeight = header ? header.offsetHeight : 0;
+
+        var targetTop =
+          target.getBoundingClientRect().top +
+          (window.pageYOffset || document.documentElement.scrollTop) -
+          headerHeight;
+
+        window.scrollTo(0, targetTop);
+      }
+
+      return false;
+    };
+  }
+
+  var tabButtons = document.querySelectorAll('.fr-tabs button');
+  var tabContents = document.querySelectorAll('.fr-tab-content');
+
+  for (var j = 0; j < tabButtons.length; j++) {
+
+    tabButtons[j].onclick = function() {
+
+      var target = this.getAttribute('data-tab');
+
+      for (var k = 0; k < tabButtons.length; k++) {
+        tabButtons[k].className =
+          tabButtons[k].className.replace(' active', '');
+      }
+
+      for (var l = 0; l < tabContents.length; l++) {
+        tabContents[l].className =
+          tabContents[l].className.replace(' active', '');
+      }
+
+      this.className += ' active';
+
+      var activeTab = document.getElementById(target);
+
+      if (activeTab) {
+        activeTab.className += ' active';
+      }
+
+      return false;
+    };
+  }
+    
+    var menuSelect = document.getElementById('menuSelect');
+  var quantityInput = document.getElementById('quantityInput');
+
+  var totalPrice = document.getElementById('totalPrice');
+
+  function updateCalculator() {
+
+    var price = parseInt(menuSelect.value, 10);
+    var quantity = parseInt(quantityInput.value, 10);
+
+    if (!quantity || quantity < 1) {
+      quantity = 1;
+    }
+
+    var total = price * quantity;
+
+    totalPrice.innerHTML =
+      total.toLocaleString() + '원';
+
+  }
+
+  menuSelect.onchange = updateCalculator;
+  quantityInput.oninput = updateCalculator;
+
+  updateCalculator();
+</script>
+
+</body>
+</html>
