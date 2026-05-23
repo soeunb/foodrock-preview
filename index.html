@@ -1,1522 +1,1115 @@
 <!doctype html>
 <html lang="ko">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>푸드락</title>
 
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
   <style>
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: 'Pretendard', sans-serif;
-    color: #111;
-    background: #f8f9f6;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img {
-    max-width: 100%;
-    display: block;
-  }
-
-  /* HEADER */
-
-  .fr-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,.96);
-    border-bottom: 1px solid #e8e8e8;
-  }
-
-  .fr-header-inner {
-    max-width: 1320px;
-    height: 72px;
-    margin: 0 auto;
-    padding: 0 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .fr-logo img {
-    width: 150px;
-  }
-
-  .fr-nav {
-    display: flex;
-    align-items: center;
-    gap: 38px;
-
-    font-size: 15px;
-    font-weight: 800;
-  }
-
-  /* COMMON */
-
-  .fr-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .fr-section {
-    padding: 18px 0;
-  }
-
-  .fr-panel {
-    background: #fff;
-    border: 1px solid #e5e8e2;
-    border-radius: 18px;
-    overflow: hidden;
-  }
-
-  /* HERO */
-
-  .fr-hero {
-    background: #fff;
-    border-bottom: 1px solid #eee;
-  }
-
-  .fr-hero-inner {
-    max-width: 1320px;
-    min-height: 470px;
-    margin: 0 auto;
-    padding: 70px 28px 42px;
-
-    position: relative;
-
-    display: flex;
-    align-items: center;
-  }
-
-  .fr-hero-text {
-    width: 48%;
-    position: relative;
-    z-index: 2;
-  }
-
-  .fr-hero h1 {
-    margin: 0;
-
-    font-size: 50px;
-    line-height: 1.22;
-    letter-spacing: -0.06em;
-  }
-
-  .fr-hero h1 strong {
-    color: #064d2f;
-    font-weight: 900;
-  }
-
-  .fr-hero p {
-    margin: 26px 0 0;
-
-    color: #333;
-    font-size: 19px;
-    line-height: 1.8;
-  }
-
-  .fr-hero-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-
-    width: 58%;
-    height: 100%;
-
-    background:
-      linear-gradient(
-        90deg,
-        #fff 0%,
-        rgba(255,255,255,.72) 23%,
-        rgba(255,255,255,0) 48%
-      ),
-      url('web/upload/foodrock/hero.jpg') center/cover no-repeat;
-  }
-
-  .fr-icon-row {
-    margin-top: 46px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 110px);
-    gap: 36px;
-  }
-
-  .fr-icon-item {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 800;
-  }
-
-  .fr-icon-circle {
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 12px;
-
-    border: 1px solid #e5e8e2;
-    border-radius: 50%;
-    background: #fff;
-
-    box-shadow: 0 8px 22px rgba(0,0,0,.06);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #064d2f;
-    font-size: 25px;
-  }
-
-  .fr-icon-item span {
-    display: block;
-    margin-top: 6px;
-
-    color: #555;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.4;
-  }
-
-  /* SPLIT */
-
-  .fr-split,
-  .fr-menu-panel,
-  .fr-calc-panel,
-  .fr-delivery-panel {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 24px;
-
-    padding: 28px;
-  }
-
-  .fr-side-title span {
-    display: block;
-    margin-bottom: 12px;
-
-    color: #064d2f;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: .08em;
-  }
-
-  .fr-side-title h2 {
-    margin: 0;
-
-    font-size: 32px;
-    line-height: 1.18;
-    letter-spacing: -0.06em;
-  }
-
-  .fr-side-title p {
-    margin: 20px 0 0;
-
-    color: #555;
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
-  /* BEST */
-
-  .fr-grid-5 {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-
-  .fr-card {
-    position: relative;
-
-    background: #fff;
-
-    border: 1px solid #e5e8e2;
-    border-radius: 16px;
-
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .fr-card img {
-    width: 100%;
-    height: 180px;
-
-    object-fit: cover;
-  }
-
-  .fr-card-body {
-    padding: 18px 18px 24px;
-  }
-
-  .fr-card h3 {
-    margin: 0;
-
-    font-size: 19px;
-    letter-spacing: -0.05em;
-  }
-
-  .fr-card p {
-    margin: 10px 0 0;
-
-    color: #555;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .fr-price {
-    margin-top: 16px;
-
-    font-size: 21px;
-    font-weight: 900;
-  }
-
-  .fr-badge {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-
-    padding: 6px 12px;
-
-    border-radius: 999px;
-
-    background: #064d2f;
-    color: #fff;
-
-    font-size: 12px;
-    font-weight: 900;
-  }
-
-  /* CARE */
-
-  .fr-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
-
-  .fr-care-card {
-    border: 1px solid #e5e8e2;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .fr-care-card img {
-    width: 100%;
-    height: 210px;
-
-    object-fit: cover;
-  }
-
-  .fr-care-info {
-    padding: 20px;
-  }
-
-  .fr-care-info h3 {
-    margin: 0;
-
-    font-size: 21px;
-    letter-spacing: -0.05em;
-  }
-
-  .fr-care-info p {
-    margin: 10px 0 0;
-
-    color: #555;
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
-  .fr-care-info strong {
-    display: block;
-    margin-top: 16px;
-
-    font-size: 20px;
-  }
-
-  /* MENU */
-
-  .fr-tabs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    margin-bottom: 18px;
-
-    border: 1px solid #e5e8e2;
-    border-radius: 999px;
-
-    overflow: hidden;
-  }
-
-  .fr-tabs button {
-    height: 52px;
-
-    border: 0;
-    background: transparent;
-
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 800;
-
-    cursor: pointer;
-  }
-
-  .fr-tabs button.active {
-    background: #064d2f;
-    color: #fff;
-  }
-
-  .fr-tab-content {
-    display: none;
-  }
-
-  .fr-tab-content.active {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .fr-menu-item {
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 22px;
-    align-items: start;
-
-    padding: 18px;
-
-    border: 1px solid #e5e8e2;
-    border-radius: 16px;
-
-    background: #fff;
-  }
-
-  .fr-menu-item img {
-    width: 160px;
-    height: 160px;
-
-    object-fit: cover;
-
-    border-radius: 16px;
-  }
-
-  .fr-menu-item div {
-    padding-top: 10px;
-  }
-
-  .fr-menu-item h3 {
-    margin: 0;
-
-    font-size: 22px;
-    line-height: 1.4;
-    letter-spacing: -0.04em;
-  }
-
-  .fr-menu-item strong {
-    display: block;
-    margin-top: 12px;
-
-    font-size: 22px;
-  }
-
-  /* CALC */
-
-  .fr-calc-panel {
-    grid-template-columns: 250px 1fr 260px;
-    align-items: center;
-  }
-
-  .fr-calc-row {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 20px;
-  }
-
-  .fr-field label {
-    display: block;
-    margin-bottom: 10px;
-
-    font-size: 14px;
-    font-weight: 900;
-  }
-
-  .fr-field select,
-  .fr-qty-box {
-    width: 100%;
-    height: 58px;
-
-    border: 1px solid #dfe3dc;
-    border-radius: 12px;
-
-    background: #fff;
-
-    font-family: inherit;
-  }
-
-  .fr-field select {
-    padding: 0 16px;
-
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .fr-qty-box {
-    display: grid;
-    grid-template-columns: 54px 1fr 54px;
-
-    overflow: hidden;
-  }
-
-  .fr-qty-box button {
-    border: 0;
-    background: #fff;
-
-    font-size: 26px;
-
-    cursor: pointer;
-  }
-
-  .fr-qty-box input {
-    width: 100%;
-
-    border: 0;
-    border-left: 1px solid #dfe3dc;
-    border-right: 1px solid #dfe3dc;
-
-    text-align: center;
-
-    font-size: 24px;
-    font-weight: 900;
-  }
-
-  .fr-calc-notice {
-    margin: 18px 0 0;
-
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .fr-calc-result {
-    min-height: 180px;
-
-    padding: 26px;
-
-    border-radius: 16px;
-    background: #f1f6ed;
-
-    text-align: center;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .fr-calc-result span {
-    display: block;
-    margin-bottom: 12px;
-
-    color: #064d2f;
-    font-size: 16px;
-    font-weight: 900;
-  }
-
-  .fr-calc-result strong {
-    display: block;
-
-    color: #064d2f;
-    font-size: 38px;
-    letter-spacing: -0.05em;
-  }
-
-  .fr-calc-result a {
-    height: 44px;
-
-    margin-top: 18px;
-    padding: 0 26px;
-
-    border-radius: 999px;
-
-    background: #064d2f;
-    color: #fff;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    font-weight: 900;
-    font-size: 15px;
-  }
-
-  /* DELIVERY */
-
-  .fr-delivery-panel {
-    grid-template-columns: 250px 1fr 280px;
-  }
-
-  .fr-info-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    border: 1px solid #e5e8e2;
-    border-radius: 16px;
-
-    overflow: hidden;
-  }
-
-  .fr-info {
-    padding: 28px 20px;
-
-    text-align: center;
-
-    border-right: 1px solid #e5e8e2;
-  }
-
-  .fr-info:last-child {
-    border-right: 0;
-  }
-
-  .fr-info-icon {
-    margin-bottom: 14px;
-
-    color: #064d2f;
-    font-size: 34px;
-  }
-
-  .fr-info strong {
-    display: block;
-    margin-bottom: 10px;
-
-    font-size: 18px;
-  }
-
-  .fr-info p {
-    margin: 0;
-
-    color: #555;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .fr-contact-box {
-    padding: 28px;
-
-    border-radius: 16px;
-
-    background: #f1f6ed;
-
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .fr-contact-box strong {
-    font-size: 18px;
-    line-height: 1.5;
-  }
-
-  .fr-contact-box p {
-    margin: 12px 0 0;
-
-    color: #555;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .fr-contact-box a {
-    height: 48px;
-
-    margin-top: 20px;
-
-    border-radius: 999px;
-
-    background: #064d2f;
-    color: #fff;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-weight: 900;
-  }
-
-  /* TABLET */
-
-  @media (max-width: 1024px) {
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      color: #111;
+      background: #f8f9f6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .fr-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid #e8e8e8;
+    }
 
     .fr-header-inner {
-      height: auto;
-      padding: 18px;
-
-      display: block;
+      max-width: 1320px;
+      height: 72px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .fr-logo img {
-      width: 140px;
-      margin-bottom: 16px;
-    }
+    .fr-logo img { width: 150px; }
 
     .fr-nav {
-      gap: 18px;
-
-      overflow-x: auto;
-      white-space: nowrap;
-
-      padding-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      font-size: 15px;
+      font-weight: 800;
     }
 
     .fr-inner {
-      padding: 0 18px;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .fr-section { padding: 24px 0; }
+
+    .fr-panel {
+      background: #fff;
+      border: 1px solid #e5e8e2;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .fr-hero {
+      background: #fff;
+      border-bottom: 1px solid #eee;
     }
 
     .fr-hero-inner {
-      padding: 48px 18px 28px;
-
-      display: block;
+      max-width: 1320px;
+      min-height: 470px;
+      margin: 0 auto;
+      padding: 70px 28px 42px;
+      position: relative;
+      display: flex;
+      align-items: center;
     }
 
     .fr-hero-text {
-      width: 100%;
+      width: 48%;
+      position: relative;
+      z-index: 2;
     }
 
     .fr-hero h1 {
-      font-size: 38px;
+      margin: 0;
+      font-size: 50px;
+      line-height: 1.22;
+      letter-spacing: -0.06em;
+    }
+
+    .fr-hero h1 strong {
+      color: #064d2f;
+      font-weight: 900;
+    }
+
+    .fr-hero p {
+      margin: 26px 0 0;
+      color: #333;
+      font-size: 19px;
+      line-height: 1.8;
     }
 
     .fr-hero-image {
-      display: none;
-    }
-
-    .fr-hero-inner {
-      min-height: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 58%;
+      height: 100%;
+      background:
+        linear-gradient(90deg, #fff 0%, rgba(255,255,255,.72) 23%, rgba(255,255,255,0) 48%),
+        url('web/upload/foodrock/hero.jpg') center/cover no-repeat;
     }
 
     .fr-icon-row {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      margin-top: 46px;
+      display: grid;
+      grid-template-columns: repeat(4, 110px);
+      gap: 36px;
+    }
+
+    .fr-icon-item {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .fr-icon-circle {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 12px;
+      border: 1px solid #e5e8e2;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(0,0,0,.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #064d2f;
+      font-size: 25px;
+    }
+
+    .fr-icon-item span {
+      display: block;
+      margin-top: 6px;
+      color: #555;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
     .fr-split,
     .fr-menu-panel,
     .fr-calc-panel,
     .fr-delivery-panel {
-      grid-template-columns: 1fr;
-
-      padding: 24px;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 24px;
+      padding: 28px;
     }
 
-    .fr-grid-5 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .fr-grid-3 {
-      grid-template-columns: 1fr;
-    }
-
-    .fr-tab-content.active {
-      grid-template-columns: 1fr;
-    }
-
-    .fr-calc-row {
-      grid-template-columns: 1fr;
-    }
-
-    .fr-info-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .fr-info:nth-child(2) {
-      border-right: 0;
-    }
-
-    .fr-info:nth-child(1),
-    .fr-info:nth-child(2) {
-      border-bottom: 1px solid #e5e8e2;
-    }
-  }
-
-  /* MOBILE */
-
-  @media (max-width: 600px) {
-
-    .fr-inner {
-      padding: 0 14px;
-    }
-
-    .fr-header-inner {
-      padding: 14px;
-    }
-
-    .fr-logo img {
-      width: 120px;
-    }
-
-    .fr-nav {
-      gap: 22px;
-      font-size: 14px;
-    }
-
-    .fr-hero-inner {
-      min-height: auto;
-      padding: 36px 18px 34px;
-    }
-
-    .fr-hero-image {
-      display: none;
-    }
-
-    .fr-hero h1 {
-      font-size: 30px;
-    }
-
-    .fr-hero p {
-      font-size: 16px;
-      line-height: 1.7;
+    .fr-side-title span {
+      display: block;
+      margin-bottom: 12px;
+      color: #064d2f;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .08em;
     }
 
     .fr-side-title h2 {
-      font-size: 30px;
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.18;
+      letter-spacing: -0.06em;
     }
 
-    .fr-grid-5,
-    .fr-info-grid {
-      grid-template-columns: 1fr;
+    .fr-side-title p {
+      margin: 20px 0 0;
+      color: #555;
+      font-size: 16px;
+      line-height: 1.8;
     }
 
-    .fr-card img {
-      height: 240px;
-    }
-
-    .fr-tabs {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .fr-menu-item {
-      grid-template-columns: 120px 1fr;
+    .fr-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       gap: 16px;
     }
 
-    .fr-menu-item img {
-      width: 120px;
-      height: 120px;
+    .fr-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid #e5e8e2;
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
     }
 
-    .fr-menu-item h3 {
-      font-size: 18px;
+    .fr-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
 
-    .fr-menu-item strong {
+    .fr-card-body { padding: 18px 18px 24px; }
+
+    .fr-card h3 {
+      margin: 0;
+      font-size: 19px;
+      letter-spacing: -0.05em;
+    }
+
+    .fr-card p {
+      margin: 10px 0 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .fr-price {
+      margin-top: 16px;
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .fr-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #064d2f;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .fr-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .fr-care-card {
+      border: 1px solid #e5e8e2;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .fr-care-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .fr-care-info { padding: 20px; }
+
+    .fr-care-info h3 {
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: -0.05em;
+    }
+
+    .fr-care-info p {
+      margin: 10px 0 0;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .fr-care-info strong {
+      display: block;
+      margin-top: 16px;
       font-size: 20px;
     }
 
-    .fr-info {
-      border-right: 0;
-      border-bottom: 1px solid #e5e8e2;
+    .fr-diet-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
     }
 
-    .fr-info:last-child {
-      border-bottom: 0;
+    .fr-diet-card {
+      min-height: 118px;
+      padding: 24px 28px;
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .fr-diet-card.green { background: #f0f6ec; }
+    .fr-diet-card.blue { background: #eef5ff; }
+
+    .fr-diet-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+    }
+
+    .fr-diet-card strong {
+      display: block;
+      font-size: 24px;
+      letter-spacing: -0.05em;
+    }
+
+    .fr-diet-card p {
+      margin: 8px 0 0;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .fr-diet-card button {
+      height: 48px;
+      padding: 0 28px;
+      border-radius: 10px;
+      border: 1px solid #064d2f;
+      background: #fff;
+      color: #064d2f;
+      font-family: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .fr-diet-card.blue button {
+      border-color: #0f4da2;
+      color: #0f4da2;
+    }
+
+    .fr-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 18px;
+      border: 1px solid #e5e8e2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fr-tabs button {
+      height: 52px;
+      border: 0;
+      background: transparent;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .fr-tabs button.active {
+      background: #064d2f;
+      color: #fff;
+    }
+
+    .fr-tab-content { display: none; }
+
+    .fr-tab-content.active {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .fr-menu-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 22px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid #e5e8e2;
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .fr-menu-item img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .fr-menu-item div { padding-top: 10px; }
+
+    .fr-menu-item h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.4;
+      letter-spacing: -0.04em;
+    }
+
+    .fr-menu-item strong {
+      display: block;
+      margin-top: 12px;
+      font-size: 22px;
+    }
+
+    .fr-calc-panel {
+      grid-template-columns: 250px 1fr 260px;
+      align-items: center;
+    }
+
+    .fr-calc-row {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 20px;
+    }
+
+    .fr-field label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .fr-field select,
+    .fr-qty-box {
+      width: 100%;
+      height: 58px;
+      border: 1px solid #dfe3dc;
+      border-radius: 12px;
+      background: #fff;
+      font-family: inherit;
+    }
+
+    .fr-field select {
+      padding: 0 16px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .fr-qty-box {
+      display: grid;
+      grid-template-columns: 54px 1fr 54px;
+      overflow: hidden;
+    }
+
+    .fr-qty-box button {
+      border: 0;
+      background: #fff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .fr-qty-box input {
+      width: 100%;
+      border: 0;
+      border-left: 1px solid #dfe3dc;
+      border-right: 1px solid #dfe3dc;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .fr-calc-notice {
+      margin: 18px 0 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .fr-calc-result {
+      min-height: 180px;
+      padding: 26px;
+      border-radius: 16px;
+      background: #f1f6ed;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fr-calc-result span {
+      display: block;
+      margin-bottom: 12px;
+      color: #064d2f;
+      font-size: 16px;
+      font-weight: 900;
     }
 
     .fr-calc-result strong {
-      font-size: 32px;
+      display: block;
+      color: #064d2f;
+      font-size: 38px;
+      letter-spacing: -0.05em;
     }
-  }
+
+    .fr-calc-result a {
+      height: 44px;
+      margin-top: 18px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: #064d2f;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 15px;
+    }
+
+    .fr-delivery-panel { grid-template-columns: 250px 1fr 280px; }
+
+    .fr-info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid #e5e8e2;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .fr-info {
+      padding: 28px 20px;
+      text-align: center;
+      border-right: 1px solid #e5e8e2;
+    }
+
+    .fr-info:last-child { border-right: 0; }
+
+    .fr-info-icon {
+      margin-bottom: 14px;
+      color: #064d2f;
+      font-size: 34px;
+    }
+
+    .fr-info strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .fr-info p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .fr-contact-box {
+      padding: 28px;
+      border-radius: 16px;
+      background: #f1f6ed;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .fr-contact-box strong {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .fr-contact-box p {
+      margin: 12px 0 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .fr-contact-box a {
+      height: 48px;
+      margin-top: 20px;
+      border-radius: 999px;
+      background: #064d2f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .fr-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+    }
+
+    .fr-modal.open { display: block; }
+
+    .fr-modal-dim {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+    }
+
+    .fr-modal-box {
+      position: relative;
+      z-index: 2;
+      width: min(920px, calc(100% - 32px));
+      max-height: calc(100vh - 48px);
+      margin: 24px auto;
+      padding: 28px;
+      border-radius: 22px;
+      background: #fff;
+      overflow: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,.25);
+    }
+
+    .fr-modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 22px;
+    }
+
+    .fr-modal-head h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.05em;
+    }
+
+    .fr-modal-close {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: #f3f4f1;
+      border-radius: 50%;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .fr-modal-img {
+      width: 100%;
+      border: 1px solid #e5e8e2;
+      border-radius: 14px;
+    }
+
+    .fr-modal-actions {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .fr-modal-actions a {
+      height: 48px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: #064d2f;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    @media (max-width: 1024px) {
+      .fr-header-inner {
+        height: auto;
+        padding: 18px;
+        display: block;
+      }
+
+      .fr-logo img {
+        width: 140px;
+        margin-bottom: 16px;
+      }
+
+      .fr-nav {
+        gap: 18px;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 6px;
+      }
+
+      .fr-inner { padding: 0 18px; }
+
+      .fr-hero-inner {
+        min-height: auto;
+        padding: 48px 18px 34px;
+        display: block;
+      }
+
+      .fr-hero-text { width: 100%; }
+      .fr-hero h1 { font-size: 38px; }
+      .fr-hero-image { display: none; }
+
+      .fr-icon-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+
+      .fr-split,
+      .fr-menu-panel,
+      .fr-calc-panel,
+      .fr-delivery-panel {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+
+      .fr-grid-5 { grid-template-columns: repeat(2, 1fr); }
+      .fr-grid-3 { grid-template-columns: 1fr; }
+      .fr-diet-buttons { grid-template-columns: 1fr; }
+      .fr-tab-content.active { grid-template-columns: 1fr; }
+      .fr-calc-row { grid-template-columns: 1fr; }
+
+      .fr-info-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .fr-info:nth-child(2) { border-right: 0; }
+      .fr-info:nth-child(1),
+      .fr-info:nth-child(2) { border-bottom: 1px solid #e5e8e2; }
+    }
+
+    @media (max-width: 600px) {
+      .fr-inner { padding: 0 14px; }
+
+      .fr-header-inner { padding: 14px; }
+      .fr-logo img { width: 120px; }
+
+      .fr-nav {
+        gap: 22px;
+        font-size: 14px;
+      }
+
+      .fr-hero-inner { padding: 36px 18px 34px; }
+      .fr-hero h1 { font-size: 30px; }
+
+      .fr-hero p {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .fr-side-title h2 { font-size: 30px; }
+
+      .fr-grid-5,
+      .fr-info-grid { grid-template-columns: 1fr; }
+
+      .fr-card img { height: 240px; }
+
+      .fr-diet-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .fr-diet-icon { margin: 0 auto; }
+
+      .fr-tabs { grid-template-columns: repeat(2, 1fr); }
+
+      .fr-menu-item {
+        grid-template-columns: 120px 1fr;
+        gap: 16px;
+      }
+
+      .fr-menu-item img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .fr-menu-item h3 { font-size: 18px; }
+      .fr-menu-item strong { font-size: 20px; }
+
+      .fr-info {
+        border-right: 0;
+        border-bottom: 1px solid #e5e8e2;
+      }
+
+      .fr-info:last-child { border-bottom: 0; }
+
+      .fr-calc-result strong { font-size: 32px; }
+
+      .fr-modal-box {
+        padding: 18px;
+        margin: 16px auto;
+        max-height: calc(100vh - 32px);
+      }
+
+      .fr-modal-head h3 { font-size: 22px; }
+    }
   </style>
 </head>
 
 <body>
 
-  <header class="fr-header">
-    <div class="fr-header-inner">
+<header class="fr-header">
+  <div class="fr-header-inner">
+    <a href="#top" class="fr-logo">
+      <img src="web/upload/foodrock/logo.png" alt="푸드락">
+    </a>
 
-      <a href="#top" class="fr-logo">
-        <img src="web/upload/foodrock/logo.png" alt="푸드락">
-      </a>
+    <nav class="fr-nav">
+      <a href="#best">베스트 메뉴</a>
+      <a href="#care">돌봄도시락</a>
+      <a href="#menu">전체 메뉴</a>
+      <a href="#calc">단체 주문 계산기</a>
+      <a href="#delivery">배송·문의 안내</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="fr-nav">
-        <a href="#best">베스트 메뉴</a>
-        <a href="#care">돌봄도시락</a>
-        <a href="#menu">전체 메뉴</a>
-        <a href="#calc">단체 주문 계산기</a>
-        <a href="#delivery">배송·문의 안내</a>
-      </nav>
+<main id="top">
 
+  <section class="fr-hero">
+    <div class="fr-hero-inner">
+      <div class="fr-hero-text">
+        <h1>정성 가득, 맛있는 한 끼<br><strong>푸드락 도시락</strong></h1>
+        <p>신선한 재료와 균형 잡힌 식단으로<br>건강하고 든든한 하루를 전해드립니다.</p>
+
+        <div class="fr-icon-row">
+          <div class="fr-icon-item"><div class="fr-icon-circle">🌿</div>신선한 재료<span>매일 신선한 식재료 사용</span></div>
+          <div class="fr-icon-item"><div class="fr-icon-circle">👥</div>균형 잡힌 식단<span>영양을 고려한 메뉴 구성</span></div>
+          <div class="fr-icon-item"><div class="fr-icon-circle">💚</div>정성 가득 조리<span>위생적이고 정성스럽게</span></div>
+          <div class="fr-icon-item"><div class="fr-icon-circle">🚚</div>정시 배송<span>정해진 시간에 정확하게</span></div>
+        </div>
+      </div>
+
+      <div class="fr-hero-image"></div>
     </div>
-  </header>
+  </section>
 
-  <main id="top">
-
-    <!-- HERO -->
-
-    <section class="fr-hero">
-      <div class="fr-hero-inner">
-
-        <div class="fr-hero-text">
-
-          <h1>
-            정성 가득, 맛있는 한 끼<br>
-            <strong>푸드락 도시락</strong>
-          </h1>
-
-          <p>
-            신선한 재료와 균형 잡힌 식단으로<br>
-            건강하고 든든한 하루를 전해드립니다.
-          </p>
-
-          <div class="fr-icon-row">
-
-            <div class="fr-icon-item">
-              <div class="fr-icon-circle">🌿</div>
-              신선한 재료
-              <span>매일 신선한 식재료 사용</span>
-            </div>
-
-            <div class="fr-icon-item">
-              <div class="fr-icon-circle">👥</div>
-              균형 잡힌 식단
-              <span>영양을 고려한 메뉴 구성</span>
-            </div>
-
-            <div class="fr-icon-item">
-              <div class="fr-icon-circle">💚</div>
-              정성 가득 조리
-              <span>위생적이고 정성스럽게</span>
-            </div>
-
-            <div class="fr-icon-item">
-              <div class="fr-icon-circle">🚚</div>
-              정시 배송
-              <span>정해진 시간에 정확하게</span>
-            </div>
-
-          </div>
+  <section id="best" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-panel fr-split">
+        <div class="fr-side-title">
+          <span>BEST MENU</span>
+          <h2>베스트 메뉴</h2>
+          <p>푸드락 고객님들이 가장 많이 선택하시는 메뉴입니다.</p>
         </div>
 
-        <div class="fr-hero-image"></div>
-
+        <div class="fr-grid-5">
+          <div class="fr-card"><span class="fr-badge">BEST</span><img src="web/upload/foodrock/best01.jpg"><div class="fr-card-body"><h3>소불고기 도시락</h3><p>남녀노소 인기 메뉴</p><div class="fr-price">13,000원</div></div></div>
+          <div class="fr-card"><span class="fr-badge">BEST</span><img src="web/upload/foodrock/best02.jpg"><div class="fr-card-body"><h3>제육 도시락</h3><p>매콤달콤 인기 메뉴</p><div class="fr-price">12,000원</div></div></div>
+          <div class="fr-card"><span class="fr-badge">BEST</span><img src="web/upload/foodrock/best03.jpg"><div class="fr-card-body"><h3>웰빙 도시락</h3><p>건강한 식단 구성</p><div class="fr-price">10,000원</div></div></div>
+          <div class="fr-card"><span class="fr-badge">BEST</span><img src="web/upload/foodrock/best04.jpg"><div class="fr-card-body"><h3>일반 도시락</h3><p>든든한 기본 메뉴</p><div class="fr-price">9,000원</div></div></div>
+          <div class="fr-card"><span class="fr-badge">BEST</span><img src="web/upload/foodrock/best05.jpg"><div class="fr-card-body"><h3>프리미엄 도시락</h3><p>특별한 행사 추천</p><div class="fr-price">16,000원</div></div></div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- BEST -->
-
-    <section id="best" class="fr-section">
-      <div class="fr-inner">
-
-        <div class="fr-panel fr-split">
-
-          <div class="fr-side-title">
-
-            <span>BEST MENU</span>
-
-            <h2>베스트 메뉴</h2>
-
-            <p>
-              푸드락 고객님들이 가장 많이 선택하시는 메뉴입니다.
-            </p>
-
-          </div>
-
-          <div class="fr-grid-5">
-
-            <div class="fr-card">
-              <span class="fr-badge">BEST</span>
-
-              <img src="web/upload/foodrock/best01.jpg" alt="">
-
-              <div class="fr-card-body">
-                <h3>소불고기 도시락</h3>
-                <p>남녀노소 인기 메뉴</p>
-                <div class="fr-price">13,000원</div>
-              </div>
-            </div>
-
-            <div class="fr-card">
-              <span class="fr-badge">BEST</span>
-
-              <img src="web/upload/foodrock/best02.jpg" alt="">
-
-              <div class="fr-card-body">
-                <h3>제육 도시락</h3>
-                <p>매콤달콤 인기 메뉴</p>
-                <div class="fr-price">12,000원</div>
-              </div>
-            </div>
-
-            <div class="fr-card">
-              <span class="fr-badge">BEST</span>
-
-              <img src="web/upload/foodrock/best03.jpg" alt="">
-
-              <div class="fr-card-body">
-                <h3>웰빙 도시락</h3>
-                <p>건강한 식단 구성</p>
-                <div class="fr-price">10,000원</div>
-              </div>
-            </div>
-
-            <div class="fr-card">
-              <span class="fr-badge">BEST</span>
-
-              <img src="web/upload/foodrock/best04.jpg" alt="">
-
-              <div class="fr-card-body">
-                <h3>일반 도시락</h3>
-                <p>든든한 기본 메뉴</p>
-                <div class="fr-price">9,000원</div>
-              </div>
-            </div>
-
-            <div class="fr-card">
-              <span class="fr-badge">BEST</span>
-
-              <img src="web/upload/foodrock/best05.jpg" alt="">
-
-              <div class="fr-card-body">
-                <h3>프리미엄 도시락</h3>
-                <p>특별한 행사 추천</p>
-                <div class="fr-price">16,000원</div>
-              </div>
-            </div>
-
-          </div>
-
+  <section id="care" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-panel fr-split">
+        <div class="fr-side-title">
+          <span>CARE MEAL</span>
+          <h2>돌봄도시락</h2>
+          <p>건강과 영양을 고려한 맞춤형 도시락입니다. 좋은 식재료와 철저한 위생관리로 믿고 드실 수 있습니다.</p>
         </div>
 
-      </div>
-    </section>
-
-    <!-- CARE -->
-
-    <section id="care" class="fr-section">
-      <div class="fr-inner">
-
-        <div class="fr-panel fr-split">
-
-          <div class="fr-side-title">
-
-            <span>CARE MEAL</span>
-
-            <h2>돌봄도시락</h2>
-
-            <p>
-              건강과 영양을 고려한 맞춤형 도시락입니다.
-              좋은 식재료와 철저한 위생관리로 믿고 드실 수 있습니다.
-            </p>
-
-          </div>
-
-          <div class="fr-grid-3">
-
-            <div class="fr-care-card">
-
-              <img src="web/upload/foodrock/care01.jpg" alt="">
-
-              <div class="fr-care-info">
-                <h3>정성 도시락</h3>
-
-                <p>
-                  영양 밸런스를 맞춘 건강한 한 끼 식사
-                </p>
-
-                <strong>12,000원부터</strong>
-              </div>
-
-            </div>
-
-            <div class="fr-care-card">
-
-              <img src="web/upload/foodrock/care02.jpg" alt="">
-
-              <div class="fr-care-info">
-                <h3>영양 도시락</h3>
-
-                <p>
-                  저염·저당 식단으로 건강을 더한 메뉴
-                </p>
-
-                <strong>11,000원부터</strong>
-              </div>
-
-            </div>
-
-            <div class="fr-care-card">
-
-              <img src="web/upload/foodrock/care03.jpg" alt="">
-
-              <div class="fr-care-info">
-                <h3>실버 도시락</h3>
-
-                <p>
-                  어르신을 위한 부드럽고 균형 잡힌 식단
-                </p>
-
-                <strong>13,000원부터</strong>
-              </div>
-
-            </div>
-
-          </div>
-
+        <div class="fr-grid-3">
+          <div class="fr-care-card"><img src="web/upload/foodrock/care01.jpg"><div class="fr-care-info"><h3>정성 도시락</h3><p>영양 밸런스를 맞춘 건강한 한 끼 식사</p><strong>12,000원부터</strong></div></div>
+          <div class="fr-care-card"><img src="web/upload/foodrock/care02.jpg"><div class="fr-care-info"><h3>영양 도시락</h3><p>저염·저당 식단으로 건강을 더한 메뉴</p><strong>11,000원부터</strong></div></div>
+          <div class="fr-care-card"><img src="web/upload/foodrock/care03.jpg"><div class="fr-care-info"><h3>실버 도시락</h3><p>어르신을 위한 부드럽고 균형 잡힌 식단</p><strong>13,000원부터</strong></div></div>
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- MENU -->
-
-    <section id="menu" class="fr-section">
-      <div class="fr-inner">
-
-        <div class="fr-panel fr-menu-panel">
-
-          <div class="fr-side-title">
-
-            <span>ALL MENU</span>
-
-            <h2>전체 메뉴</h2>
-
-            <p>
-              푸드락의 다양한 도시락 메뉴를 확인해보세요.
-            </p>
-
-          </div>
-
+  <section class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-diet-buttons">
+        <div class="fr-diet-card green">
+          <div class="fr-diet-icon">📅</div>
           <div>
-
-            <div class="fr-tabs">
-
-              <button type="button"
-                class="active"
-                data-tab="tab01">
-                통도시락
-              </button>
-
-              <button type="button"
-                data-tab="tab02">
-                정식도시락
-              </button>
-
-            </div>
-
-            <!-- 통도시락 -->
-
-            <div id="tab01"
-              class="fr-tab-content active">
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu01.jpg" alt="">
-
-                <div>
-                  <h3>소불고기 도시락</h3>
-                  <strong>13,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu02.jpg" alt="">
-
-                <div>
-                  <h3>제육 도시락</h3>
-                  <strong>12,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu03.jpg" alt="">
-
-                <div>
-                  <h3>웰빙 도시락</h3>
-                  <strong>10,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu04.jpg" alt="">
-
-                <div>
-                  <h3>일반 도시락</h3>
-                  <strong>9,000원</strong>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- 정식도시락 -->
-
-            <div id="tab02"
-              class="fr-tab-content">
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu05.jpg" alt="">
-
-                <div>
-                  <h3>소불고기 정식</h3>
-                  <strong>15,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu06.jpg" alt="">
-
-                <div>
-                  <h3>제육 정식</h3>
-                  <strong>14,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu07.jpg" alt="">
-
-                <div>
-                  <h3>프리미엄 정식</h3>
-                  <strong>16,000원</strong>
-                </div>
-              </div>
-
-              <div class="fr-menu-item">
-                <img src="web/upload/foodrock/menu08.jpg" alt="">
-
-                <div>
-                  <h3>고급 정식</h3>
-                  <strong>17,000원</strong>
-                </div>
-              </div>
-
-            </div>
-
+            <strong>균형 잡힌 월간 식단표를 운영하고 있습니다.</strong>
+            <p>매일 다른 메뉴로 건강한 식단을 제공합니다.</p>
           </div>
-
+          <button type="button" data-modal="care">돌봄 식단표 보기 ›</button>
         </div>
 
-      </div>
-    </section>
-
-    <!-- CALC -->
-
-    <section id="calc" class="fr-section">
-      <div class="fr-inner">
-
-        <div class="fr-panel fr-calc-panel">
-
-          <div class="fr-side-title">
-
-            <span>GROUP ORDER</span>
-
-            <h2>단체 주문 계산기</h2>
-
-            <p>
-              수량과 메뉴를 선택하시면 예상 금액을 확인하실 수 있습니다.
-            </p>
-
-          </div>
-
+        <div class="fr-diet-card blue">
+          <div class="fr-diet-icon">👥</div>
           <div>
-
-            <div class="fr-calc-row">
-
-              <div class="fr-field">
-
-                <label>메뉴 선택</label>
-
-                <select id="menuSelect">
-
-                  <option value="13000">
-                    소불고기 도시락 · 13,000원
-                  </option>
-
-                  <option value="12000">
-                    제육 도시락 · 12,000원
-                  </option>
-
-                  <option value="10000">
-                    웰빙 도시락 · 10,000원
-                  </option>
-
-                  <option value="9000">
-                    일반 도시락 · 9,000원
-                  </option>
-
-                  <option value="11000">
-                    돌봄도시락 · 11,000원
-                  </option>
-
-                </select>
-
-              </div>
-
-              <div class="fr-field">
-
-                <label>수량 선택</label>
-
-                <div class="fr-qty-box">
-
-                  <button type="button"
-                    id="qtyMinus">−</button>
-
-                  <input type="number"
-                    id="quantityInput"
-                    value="10"
-                    min="1">
-
-                  <button type="button"
-                    id="qtyPlus">+</button>
-
-                </div>
-
-              </div>
-
-            </div>
-
-            <p class="fr-calc-notice">
-              ※ 실제 금액은 메뉴 구성, 배송 지역,
-              주문 수량에 따라 달라질 수 있습니다.
-            </p>
-
+            <strong>기업·행사 단체 식단표도 운영하고 있습니다.</strong>
+            <p>단체 급식 및 행사 맞춤 식단을 확인해보세요.</p>
           </div>
+          <button type="button" data-modal="group">단체 식단표 보기 ›</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="fr-calc-result">
-
-            <div>
-
-              <span>예상 금액</span>
-
-              <strong id="totalPrice">
-                130,000원
-              </strong>
-
-              <a href="tel:000-0000-0000">
-                견적 문의하기
-              </a>
-
-            </div>
-
-          </div>
-
+  <section id="menu" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-panel fr-menu-panel">
+        <div class="fr-side-title">
+          <span>ALL MENU</span>
+          <h2>전체 메뉴</h2>
+          <p>푸드락의 다양한 도시락 메뉴를 확인해보세요.</p>
         </div>
 
+        <div>
+          <div class="fr-tabs">
+            <button type="button" class="active" data-tab="tab01">통도시락</button>
+            <button type="button" data-tab="tab02">정식도시락</button>
+          </div>
+
+          <div id="tab01" class="fr-tab-content active">
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu01.jpg"><div><h3>소불고기 도시락</h3><strong>13,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu02.jpg"><div><h3>제육 도시락</h3><strong>12,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu03.jpg"><div><h3>웰빙 도시락</h3><strong>10,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu04.jpg"><div><h3>일반 도시락</h3><strong>9,000원</strong></div></div>
+          </div>
+
+          <div id="tab02" class="fr-tab-content">
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu05.jpg"><div><h3>소불고기 정식</h3><strong>15,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu06.jpg"><div><h3>제육 정식</h3><strong>14,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu07.jpg"><div><h3>프리미엄 정식</h3><strong>16,000원</strong></div></div>
+            <div class="fr-menu-item"><img src="web/upload/foodrock/menu08.jpg"><div><h3>고급 정식</h3><strong>17,000원</strong></div></div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- DELIVERY -->
-
-    <section id="delivery"
-      class="fr-section">
-
-      <div class="fr-inner">
-
-        <div class="fr-panel fr-delivery-panel">
-
-          <div class="fr-side-title">
-
-            <span>DELIVERY & CONTACT</span>
-
-            <h2>배송·문의 안내</h2>
-
-            <p>
-              배송 가능 지역과 단체 주문,
-              맞춤 상담까지 푸드락이 함께합니다.
-            </p>
-
-          </div>
-
-          <div class="fr-info-grid">
-
-            <div class="fr-info">
-
-              <div class="fr-info-icon">👥</div>
-
-              <strong>단체 주문</strong>
-
-              <p>
-                기업, 학교, 행사 등 단체 주문 환영
-              </p>
-
-            </div>
-
-            <div class="fr-info">
-
-              <div class="fr-info-icon">📅</div>
-
-              <strong>예약 주문</strong>
-
-              <p>
-                원하는 날짜와 시간에 맞춰 예약 가능
-              </p>
-
-            </div>
-
-            <div class="fr-info">
-
-              <div class="fr-info-icon">🚚</div>
-
-              <strong>배송 지역</strong>
-
-              <p>
-                서울 및 수도권 전 지역 배송 가능
-              </p>
-
-            </div>
-
-            <div class="fr-info">
-
-              <div class="fr-info-icon">🎧</div>
-
-              <strong>맞춤 상담</strong>
-
-              <p>
-                메뉴 구성, 견적 등 친절한 맞춤 상담
-              </p>
-
-            </div>
-
-          </div>
-
-          <div class="fr-contact-box">
-
-            <strong>
-              배송 가능 여부와 단체 주문은<br>
-              전화로 문의해주세요.
-            </strong>
-
-            <p>
-              행사, 기업, 세미나, 복지기관 등
-              맞춤 구성 상담 가능합니다.
-            </p>
-
-            <a href="tel:000-0000-0000">
-              ☎ 000-0000-0000
-            </a>
-
-          </div>
-
+  <section id="calc" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-panel fr-calc-panel">
+        <div class="fr-side-title">
+          <span>GROUP ORDER</span>
+          <h2>단체 주문 계산기</h2>
+          <p>수량과 메뉴를 선택하시면 예상 금액을 확인하실 수 있습니다.</p>
         </div>
 
+        <div>
+          <div class="fr-calc-row">
+            <div class="fr-field">
+              <label>메뉴 선택</label>
+              <select id="menuSelect">
+                <option value="13000">소불고기 도시락 · 13,000원</option>
+                <option value="12000">제육 도시락 · 12,000원</option>
+                <option value="10000">웰빙 도시락 · 10,000원</option>
+                <option value="9000">일반 도시락 · 9,000원</option>
+                <option value="11000">돌봄도시락 · 11,000원</option>
+              </select>
+            </div>
+
+            <div class="fr-field">
+              <label>수량 선택</label>
+              <div class="fr-qty-box">
+                <button type="button" id="qtyMinus">−</button>
+                <input type="number" id="quantityInput" value="10" min="1">
+                <button type="button" id="qtyPlus">+</button>
+              </div>
+            </div>
+          </div>
+
+          <p class="fr-calc-notice">※ 실제 금액은 메뉴 구성, 배송 지역, 주문 수량에 따라 달라질 수 있습니다.</p>
+        </div>
+
+        <div class="fr-calc-result">
+          <div>
+            <span>예상 금액</span>
+            <strong id="totalPrice">130,000원</strong>
+            <a href="tel:000-0000-0000">견적 문의하기</a>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <section id="delivery" class="fr-section">
+    <div class="fr-inner">
+      <div class="fr-panel fr-delivery-panel">
+        <div class="fr-side-title">
+          <span>DELIVERY & CONTACT</span>
+          <h2>배송·문의 안내</h2>
+          <p>배송 가능 지역과 단체 주문, 맞춤 상담까지 푸드락이 함께합니다.</p>
+        </div>
 
-  <script>
+        <div class="fr-info-grid">
+          <div class="fr-info"><div class="fr-info-icon">👥</div><strong>단체 주문</strong><p>기업, 학교, 행사 등 단체 주문 환영</p></div>
+          <div class="fr-info"><div class="fr-info-icon">📅</div><strong>예약 주문</strong><p>원하는 날짜와 시간에 맞춰 예약 가능</p></div>
+          <div class="fr-info"><div class="fr-info-icon">🚚</div><strong>배송 지역</strong><p>서울 및 수도권 전 지역 배송 가능</p></div>
+          <div class="fr-info"><div class="fr-info-icon">🎧</div><strong>맞춤 상담</strong><p>메뉴 구성, 견적 등 친절한 맞춤 상담</p></div>
+        </div>
 
-    /* TAB */
+        <div class="fr-contact-box">
+          <strong>배송 가능 여부와 단체 주문은<br>전화로 문의해주세요.</strong>
+          <p>행사, 기업, 세미나, 복지기관 등 맞춤 구성 상담 가능합니다.</p>
+          <a href="tel:000-0000-0000">☎ 000-0000-0000</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    var tabButtons =
-      document.querySelectorAll('.fr-tabs button');
+</main>
 
-    var tabContents =
-      document.querySelectorAll('.fr-tab-content');
+<div class="fr-modal" id="dietModal">
+  <div class="fr-modal-dim" data-close="true"></div>
 
-    for (var i = 0; i < tabButtons.length; i++) {
+  <div class="fr-modal-box">
+    <div class="fr-modal-head">
+      <h3 id="modalTitle">식단표</h3>
+      <button type="button" class="fr-modal-close" data-close="true">×</button>
+    </div>
 
-      tabButtons[i].onclick = function () {
+    <img id="modalImage" class="fr-modal-img" src="" alt="식단표">
 
-        var target =
-          this.getAttribute('data-tab');
+    <div class="fr-modal-actions">
+      <a id="modalSave" href="" download>이미지 저장</a>
+    </div>
+  </div>
+</div>
 
-        for (var j = 0; j < tabButtons.length; j++) {
-          tabButtons[j].classList.remove('active');
-        }
+<script>
+  var tabButtons = document.querySelectorAll('.fr-tabs button');
+  var tabContents = document.querySelectorAll('.fr-tab-content');
 
-        for (var k = 0; k < tabContents.length; k++) {
-          tabContents[k].classList.remove('active');
-        }
+  for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].onclick = function () {
+      var target = this.getAttribute('data-tab');
 
-        this.classList.add('active');
-
-        document.getElementById(target)
-          .classList.add('active');
-      };
-    }
-
-    /* CALCULATOR */
-
-    var menuSelect =
-      document.getElementById('menuSelect');
-
-    var quantityInput =
-      document.getElementById('quantityInput');
-
-    var totalPrice =
-      document.getElementById('totalPrice');
-
-    var qtyMinus =
-      document.getElementById('qtyMinus');
-
-    var qtyPlus =
-      document.getElementById('qtyPlus');
-
-    function updateCalculator() {
-
-      var price =
-        parseInt(menuSelect.value, 10);
-
-      var quantity =
-        parseInt(quantityInput.value, 10);
-
-      if (!quantity || quantity < 1) {
-
-        quantity = 1;
-
-        quantityInput.value = 1;
+      for (var j = 0; j < tabButtons.length; j++) {
+        tabButtons[j].classList.remove('active');
       }
 
-      totalPrice.innerHTML =
-        (price * quantity).toLocaleString()
-        + '원';
-    }
-
-    menuSelect.onchange =
-      updateCalculator;
-
-    quantityInput.oninput =
-      updateCalculator;
-
-    qtyMinus.onclick = function () {
-
-      var current =
-        parseInt(quantityInput.value, 10) || 1;
-
-      if (current > 1) {
-        quantityInput.value = current - 1;
+      for (var k = 0; k < tabContents.length; k++) {
+        tabContents[k].classList.remove('active');
       }
 
-      updateCalculator();
+      this.classList.add('active');
+      document.getElementById(target).classList.add('active');
     };
+  }
 
-    qtyPlus.onclick = function () {
+  var menuSelect = document.getElementById('menuSelect');
+  var quantityInput = document.getElementById('quantityInput');
+  var totalPrice = document.getElementById('totalPrice');
+  var qtyMinus = document.getElementById('qtyMinus');
+  var qtyPlus = document.getElementById('qtyPlus');
 
-      var current =
-        parseInt(quantityInput.value, 10) || 1;
+  function updateCalculator() {
+    var price = parseInt(menuSelect.value, 10);
+    var quantity = parseInt(quantityInput.value, 10);
 
-      quantityInput.value = current + 1;
+    if (!quantity || quantity < 1) {
+      quantity = 1;
+      quantityInput.value = 1;
+    }
 
-      updateCalculator();
-    };
+    totalPrice.innerHTML = (price * quantity).toLocaleString() + '원';
+  }
 
+  menuSelect.onchange = updateCalculator;
+  quantityInput.oninput = updateCalculator;
+
+  qtyMinus.onclick = function () {
+    var current = parseInt(quantityInput.value, 10) || 1;
+    if (current > 1) quantityInput.value = current - 1;
     updateCalculator();
+  };
 
-  </script>
+  qtyPlus.onclick = function () {
+    var current = parseInt(quantityInput.value, 10) || 1;
+    quantityInput.value = current + 1;
+    updateCalculator();
+  };
+
+  updateCalculator();
+
+  var modal = document.getElementById('dietModal');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalImage = document.getElementById('modalImage');
+  var modalSave = document.getElementById('modalSave');
+  var modalButtons = document.querySelectorAll('[data-modal]');
+
+  var modalData = {
+    care: {
+      title: '2026년 06월 돌봄 식단표',
+      image: 'web/upload/foodrock/care-menu.jpg'
+    },
+    group: {
+      title: '2026년 06월 단체 식단표',
+      image: 'web/upload/foodrock/group-menu.jpg'
+    }
+  };
+
+  for (var m = 0; m < modalButtons.length; m++) {
+    modalButtons[m].onclick = function () {
+      var type = this.getAttribute('data-modal');
+      var data = modalData[type];
+
+      modalTitle.innerHTML = data.title;
+      modalImage.src = data.image;
+      modalSave.href = data.image;
+
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  var closeItems = document.querySelectorAll('[data-close]');
+
+  for (var c = 0; c < closeItems.length; c++) {
+    closeItems[c].onclick = closeModal;
+  }
+
+  document.onkeydown = function (e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
+</script>
 
 </body>
-
 </html>
