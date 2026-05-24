@@ -8,10 +8,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
   <style>
-  /* =========================
-     RESET
-  ========================= */
-
   * {
     margin: 0;
     padding: 0;
@@ -23,7 +19,7 @@
   }
 
   body {
-    font-family: 'Pretendard', sans-serif;
+    font-family: Pretendard, sans-serif;
     background: #f7f5f1;
     color: #111;
     line-height: 1.5;
@@ -39,46 +35,52 @@
     max-width: 100%;
   }
 
-  /* =========================
-     HEADER
-  ========================= */
+  button,
+  input,
+  select {
+    font-family: inherit;
+  }
+
+  /* HEADER */
 
   .fr-header {
     position: sticky;
     top: 0;
     z-index: 100;
     background: rgba(255,255,255,.96);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid #ececec;
   }
 
   .fr-header-inner {
     max-width: 1320px;
-    height: 86px;
+    height: 88px;
     margin: 0 auto;
     padding: 0 32px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
+  .fr-logo {
+    display: block;
+    flex-shrink: 0;
+  }
+
   .fr-logo img {
-    width: 150px;
+    width: 145px;
+    height: auto;
   }
 
   .fr-nav {
     display: flex;
     align-items: center;
     gap: 42px;
-
     font-size: 15px;
     font-weight: 800;
+    white-space: nowrap;
   }
 
-  /* =========================
-     COMMON
-  ========================= */
+  /* COMMON */
 
   .fr-inner {
     max-width: 1320px;
@@ -87,56 +89,42 @@
   }
 
   .fr-section {
-    padding: 26px 0;
+    padding: 24px 0;
   }
 
   .fr-panel {
     background: #fff;
-    border: 1px solid #e7e5e1;
+    border: 1px solid #e9e7e2;
     border-radius: 26px;
     overflow: hidden;
   }
 
-  /* =========================
-     HERO - STABLE
-  ========================= */
+  /* HERO */
 
   .fr-hero {
     position: relative;
+    min-height: 520px;
     overflow: hidden;
-
-    min-height: 500px;
-
     background:
       linear-gradient(
         90deg,
-        rgba(247,245,241,.98) 0%,
-        rgba(247,245,241,.94) 28%,
-        rgba(247,245,241,.72) 48%,
-        rgba(247,245,241,.35) 72%,
-        rgba(247,245,241,.18) 100%
+        rgba(247,245,241,.96) 0%,
+        rgba(247,245,241,.90) 28%,
+        rgba(247,245,241,.65) 50%,
+        rgba(247,245,241,.25) 75%,
+        rgba(247,245,241,.08) 100%
       ),
       url('web/upload/foodrock/hero.jpg');
-
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
   }
 
-  .fr-hero::before {
-    display: none;
-  }
-
   .fr-hero-inner {
-    position: relative;
-    z-index: 2;
-
     max-width: 1320px;
-    min-height: 500px;
-
+    min-height: 520px;
     margin: 0 auto;
-    padding: 72px 32px 52px;
-
+    padding: 68px 32px 48px;
     display: flex;
     align-items: center;
   }
@@ -146,13 +134,15 @@
   }
 
   .fr-hero-text {
-    max-width: 560px;
+    max-width: 520px;
+    position: relative;
+    z-index: 2;
   }
 
   .fr-hero h1 {
-    font-size: 56px;
-    line-height: 1.15;
-    letter-spacing: -0.06em;
+    font-size: 52px;
+    line-height: 1.14;
+    letter-spacing: -0.055em;
     font-weight: 900;
   }
 
@@ -161,31 +151,54 @@
   }
 
   .fr-hero p {
-    margin-top: 26px;
-
+    margin-top: 24px;
     color: #222;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.75;
     letter-spacing: -0.03em;
   }
 
   .fr-icon-row {
-    margin-top: 46px;
-
+    margin-top: 42px;
     display: flex;
-    gap: 26px;
+    gap: 22px;
     flex-wrap: wrap;
   }
 
-  /* =========================
-     SIDE TITLE
-  ========================= */
+  .fr-icon-item {
+    width: 104px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .fr-icon-circle {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 12px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  }
+
+  .fr-icon-item span {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  /* SIDE TITLE */
 
   .fr-side-title span {
     display: block;
-
-    margin-bottom: 12px;
-
+    margin-bottom: 10px;
     color: #0a5a36;
     font-size: 13px;
     font-weight: 900;
@@ -193,166 +206,149 @@
   }
 
   .fr-side-title h2 {
-    font-size: 42px;
-    line-height: 1.15;
-    letter-spacing: -0.06em;
+    font-size: 34px;
+    line-height: 1.14;
+    letter-spacing: -0.055em;
   }
 
   .fr-side-title p {
-    margin-top: 22px;
-
+    margin-top: 18px;
     color: #555;
-    font-size: 17px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.75;
   }
 
-  /* =========================
-     BEST MENU
-  ========================= */
+  /* BEST */
 
   .fr-split {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 34px;
-
-    padding: 34px;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+    padding: 28px;
   }
 
   .fr-grid-5 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
+    gap: 16px;
   }
 
   .fr-card {
     position: relative;
-
-    border: 1px solid #e8e6e2;
-    border-radius: 22px;
-    overflow: hidden;
-
     background: #fff;
+    border: 1px solid #ebe8e2;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   .fr-badge {
     position: absolute;
-    top: 16px;
-    left: 16px;
-
+    top: 14px;
+    left: 14px;
     z-index: 2;
-
-    height: 34px;
-    padding: 0 14px;
-
+    height: 30px;
+    padding: 0 12px;
     border-radius: 999px;
     background: #0a5a36;
     color: #fff;
-
     display: inline-flex;
     align-items: center;
-
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 900;
   }
 
   .fr-card img {
     width: 100%;
-    height: 220px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
+    background: #f4f4f4;
   }
 
   .fr-card-body {
-    padding: 22px;
+    padding: 18px;
   }
 
   .fr-card h3 {
-    font-size: 26px;
+    font-size: 21px;
     line-height: 1.3;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.045em;
   }
 
   .fr-card p {
-    margin-top: 10px;
-
+    margin-top: 8px;
     color: #666;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .fr-price {
-    margin-top: 18px;
-
-    font-size: 28px;
+    margin-top: 14px;
+    font-size: 23px;
     font-weight: 900;
   }
 
-  /* =========================
-     CARE
-  ========================= */
+  /* CARE */
 
   .fr-grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+    gap: 18px;
   }
 
   .fr-care-card {
     overflow: hidden;
-
-    border: 1px solid #e8e6e2;
+    border: 1px solid #ebe8e2;
     border-radius: 22px;
-
     background: #fff;
   }
 
   .fr-care-card img {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     object-fit: cover;
+    background: #f4f4f4;
   }
 
   .fr-care-info {
-    padding: 24px;
+    padding: 20px;
   }
 
   .fr-care-info h3 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1.3;
     letter-spacing: -0.05em;
   }
 
   .fr-care-info p {
-    margin-top: 12px;
-
+    margin-top: 10px;
     color: #666;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.65;
   }
 
   .fr-care-info strong {
     display: block;
-    margin-top: 18px;
-
-    font-size: 26px;
+    margin-top: 14px;
+    font-size: 22px;
   }
 
-  /* =========================
-     DIET BUTTON
-  ========================= */
+  /* DIET BUTTONS */
 
   .fr-diet-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    gap: 18px;
   }
 
   .fr-diet-card {
-    min-height: 150px;
-    padding: 28px;
-
-    border-radius: 24px;
-
+    min-height: 126px;
+    padding: 24px;
+    border-radius: 22px;
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 18px;
   }
 
   .fr-diet-card.green {
@@ -365,88 +361,67 @@
 
   .fr-diet-icon {
     flex-shrink: 0;
-
-    width: 72px;
-    height: 72px;
-
+    width: 62px;
+    height: 62px;
     border-radius: 50%;
     background: #fff;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 34px;
+    font-size: 28px;
   }
 
   .fr-diet-card strong {
     display: block;
-
-    font-size: 26px;
-    line-height: 1.35;
-    letter-spacing: -0.05em;
+    font-size: 20px;
+    line-height: 1.4;
+    letter-spacing: -0.045em;
   }
 
   .fr-diet-card p {
-    margin-top: 10px;
-
+    margin-top: 8px;
     color: #555;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .fr-diet-card button {
     margin-left: auto;
-
-    height: 50px;
-    padding: 0 24px;
-
+    height: 46px;
+    padding: 0 20px;
     border: 0;
     border-radius: 999px;
-
     background: #0a5a36;
     color: #fff;
-
-    font-family: inherit;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 900;
-
     cursor: pointer;
+    white-space: nowrap;
   }
 
-  /* =========================
-     ALL MENU
-  ========================= */
+  /* MENU */
 
   .fr-menu-panel {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 34px;
-
-    padding: 34px;
+    grid-template-columns: 260px 1fr;
+    gap: 28px;
+    padding: 28px;
   }
 
   .fr-tabs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
-    margin-bottom: 22px;
-
-    border: 1px solid #e7e5e1;
+    margin-bottom: 20px;
+    border: 1px solid #e7e4de;
     border-radius: 999px;
-
     overflow: hidden;
   }
 
   .fr-tabs button {
-    height: 58px;
-
+    height: 54px;
     border: 0;
     background: transparent;
-
-    font-family: inherit;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 800;
-
     cursor: pointer;
   }
 
@@ -462,152 +437,146 @@
   .fr-tab-content.active {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
+    gap: 16px;
   }
 
   .fr-menu-item {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 24px;
-
-    padding: 20px;
-
-    border: 1px solid #e8e6e2;
-    border-radius: 22px;
+    grid-template-columns: 170px 1fr;
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid #ebe8e2;
+    border-radius: 20px;
+    background: #fff;
+    align-items: center;
   }
 
   .fr-menu-item img {
-    width: 220px;
-    height: 220px;
-
-    border-radius: 18px;
+    width: 170px;
+    height: 170px;
+    border-radius: 16px;
     object-fit: cover;
+    background: #f4f4f4;
   }
 
   .fr-menu-item div {
-    padding-top: 18px;
+    min-width: 0;
   }
 
   .fr-menu-item h3 {
-    font-size: 34px;
-    line-height: 1.3;
-    letter-spacing: -0.05em;
+    font-size: 24px;
+    line-height: 1.32;
+    letter-spacing: -0.045em;
   }
 
   .fr-menu-item strong {
     display: block;
-    margin-top: 18px;
-
-    font-size: 32px;
+    margin-top: 12px;
+    font-size: 24px;
   }
 
-  /* =========================
-     CALCULATOR
-  ========================= */
+  /* CALCULATOR */
 
   .fr-calc-panel {
     display: grid;
-    grid-template-columns: 280px 1fr 300px;
-    gap: 30px;
-
-    padding: 34px;
+    grid-template-columns: 260px minmax(0, 1fr) 270px;
+    gap: 24px;
+    padding: 28px;
     align-items: center;
   }
 
   .fr-calc-row {
     display: grid;
-    grid-template-columns: 1fr 240px;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 16px;
+    align-items: end;
+  }
+
+  .fr-field {
+    min-width: 0;
   }
 
   .fr-field label {
     display: block;
-
-    margin-bottom: 10px;
-
+    margin-bottom: 8px;
     font-size: 14px;
     font-weight: 900;
   }
 
   .fr-field select {
     width: 100%;
-    height: 62px;
-
-    padding: 0 18px;
-
-    border: 1px solid #dfddd8;
-    border-radius: 16px;
-
+    min-width: 0;
+    height: 58px;
+    padding: 0 16px;
+    border: 1px solid #ddd9d1;
+    border-radius: 14px;
     background: #fff;
-
-    font-family: inherit;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
   }
 
   .fr-qty-box {
     width: 100%;
-    height: 62px;
-
-    border: 1px solid #dfddd8;
-    border-radius: 16px;
-
+    height: 58px;
+    min-width: 0;
+    border: 1px solid #ddd9d1;
+    border-radius: 14px;
     overflow: hidden;
-
     display: grid;
-    grid-template-columns: 60px 1fr 60px;
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+    background: #fff;
   }
 
   .fr-qty-box button {
+    width: 100%;
+    height: 100%;
     border: 0;
     background: #fff;
-
-    font-size: 30px;
+    font-size: 24px;
+    font-weight: 800;
     cursor: pointer;
   }
 
   .fr-qty-box input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
     border: 0;
-    border-left: 1px solid #dfddd8;
-    border-right: 1px solid #dfddd8;
-
+    border-left: 1px solid #ddd9d1;
+    border-right: 1px solid #ddd9d1;
     text-align: center;
-
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 900;
+    background: #fff;
   }
 
   .fr-calc-notice {
-    margin-top: 18px;
-
+    margin-top: 14px;
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .fr-calc-result {
-    padding: 34px;
-
-    border-radius: 24px;
+    padding: 28px;
+    border-radius: 22px;
     background: #eef6ea;
-
     text-align: center;
   }
 
   .fr-calc-result span {
     display: block;
-
-    margin-bottom: 12px;
-
+    margin-bottom: 10px;
     color: #0a5a36;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 900;
   }
 
   .fr-calc-result strong {
     display: block;
-
     color: #0a5a36;
-    font-size: 48px;
+    font-size: 38px;
     letter-spacing: -0.05em;
   }
 
@@ -615,49 +584,37 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    height: 50px;
-    padding: 0 26px;
-
-    margin-top: 20px;
-
+    height: 46px;
+    padding: 0 22px;
+    margin-top: 16px;
     border-radius: 999px;
-
     background: #0a5a36;
     color: #fff;
-
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 900;
   }
 
-  /* =========================
-     DELIVERY
-  ========================= */
+  /* DELIVERY */
 
   .fr-delivery-panel {
     display: grid;
-    grid-template-columns: 280px 1fr 300px;
-    gap: 30px;
-
-    padding: 34px;
+    grid-template-columns: 260px minmax(0, 1fr) 270px;
+    gap: 24px;
+    padding: 28px;
   }
 
   .fr-info-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
-    border: 1px solid #e8e6e2;
-    border-radius: 24px;
-
+    border: 1px solid #ebe8e2;
+    border-radius: 22px;
     overflow: hidden;
   }
 
   .fr-info {
-    padding: 28px 22px;
-
+    padding: 24px 18px;
     text-align: center;
-
-    border-right: 1px solid #e8e6e2;
+    border-right: 1px solid #ebe8e2;
   }
 
   .fr-info:last-child {
@@ -665,75 +622,61 @@
   }
 
   .fr-info-icon {
-    margin-bottom: 16px;
-    font-size: 38px;
+    margin-bottom: 12px;
+    font-size: 32px;
   }
 
   .fr-info strong {
     display: block;
-
-    margin-bottom: 10px;
-
-    font-size: 18px;
+    margin-bottom: 8px;
+    font-size: 17px;
   }
 
   .fr-info p {
     color: #666;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
   }
 
   .fr-contact-box {
-    padding: 34px;
-
-    border-radius: 24px;
+    padding: 28px;
+    border-radius: 22px;
     background: #eef6ea;
-
     text-align: center;
   }
 
   .fr-contact-box strong {
-    font-size: 24px;
+    font-size: 19px;
     line-height: 1.5;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
   }
 
   .fr-contact-box p {
-    margin-top: 14px;
-
+    margin-top: 12px;
     color: #555;
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .fr-contact-box a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    height: 52px;
-    padding: 0 28px;
-
-    margin-top: 22px;
-
+    height: 48px;
+    padding: 0 24px;
+    margin-top: 18px;
     border-radius: 999px;
-
     background: #0a5a36;
     color: #fff;
-
     font-weight: 900;
   }
 
-  /* =========================
-     MODAL
-  ========================= */
+  /* MODAL */
 
   .fr-modal {
     position: fixed;
     inset: 0;
-
     z-index: 999;
-
     display: none;
   }
 
@@ -744,23 +687,18 @@
   .fr-modal-dim {
     position: absolute;
     inset: 0;
-
     background: rgba(0,0,0,.6);
   }
 
   .fr-modal-box {
     position: relative;
     z-index: 2;
-
-    width: min(920px, calc(100% - 30px));
+    width: min(1100px, calc(100% - 30px));
     max-height: calc(100vh - 40px);
-
     margin: 20px auto;
-    padding: 28px;
-
+    padding: 26px;
     border-radius: 26px;
     background: #fff;
-
     overflow: auto;
   }
 
@@ -768,63 +706,110 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
 
   .fr-modal-head h3 {
-    font-size: 34px;
-    letter-spacing: -0.05em;
+    font-size: 28px;
+    letter-spacing: -0.04em;
   }
 
   .fr-modal-close {
-    width: 44px;
-    height: 44px;
-
+    width: 42px;
+    height: 42px;
     border: 0;
     border-radius: 50%;
-
     background: #f3f3f3;
-
-    font-size: 28px;
-
+    font-size: 26px;
     cursor: pointer;
   }
 
   .fr-modal-img {
     width: 100%;
-
-    border-radius: 18px;
+    border-radius: 16px;
   }
 
   .fr-modal-actions {
     margin-top: 18px;
-
     display: flex;
     justify-content: center;
   }
 
   .fr-modal-actions a {
-    height: 50px;
-    padding: 0 26px;
-
+    height: 48px;
+    padding: 0 24px;
     border-radius: 999px;
-
     background: #0a5a36;
     color: #fff;
-
     display: inline-flex;
     align-items: center;
-
     font-weight: 900;
   }
 
-  /* =========================
-     TABLET
-  ========================= */
+  /* MEAL TABLE */
+
+  .fr-meal-modal {
+    max-width: 1100px;
+  }
+
+  .meal-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #dfe7d8;
+    border-radius: 18px;
+  }
+
+  .meal-table {
+    width: 100%;
+    min-width: 860px;
+    border-collapse: collapse;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  .meal-table th {
+    background: #0a5a36;
+    color: #fff;
+    padding: 14px 10px;
+    font-weight: 900;
+  }
+
+  .meal-table td,
+  .meal-table tbody th {
+    border: 1px solid #e4e8df;
+    padding: 14px 12px;
+    text-align: center;
+    vertical-align: top;
+    line-height: 1.65;
+  }
+
+  .meal-table tbody th {
+    background: #f1f7ed;
+    color: #0a5a36;
+    font-size: 18px;
+  }
+
+  .meal-table td {
+    color: #222;
+    font-weight: 600;
+  }
+
+  .meal-table .holiday {
+    color: #e74b4b;
+    font-weight: 900;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .meal-note {
+    margin-top: 16px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* TABLET */
 
   @media (max-width: 1024px) {
-
     .fr-header-inner {
       height: auto;
       padding: 18px;
@@ -844,28 +829,6 @@
 
     .fr-inner {
       padding: 0 18px;
-    }
-
-    .fr-hero {
-      min-height: auto;
-    }
-
-    .fr-hero-inner {
-      min-height: auto;
-      padding: 60px 18px;
-    }
-
-    .fr-hero h1 {
-      font-size: 52px;
-    }
-
-    .fr-hero p {
-      font-size: 18px;
-    }
-
-    .fr-icon-row {
-      gap: 18px;
-      flex-wrap: wrap;
     }
 
     .fr-split,
@@ -892,12 +855,12 @@
     }
 
     .fr-menu-item {
-      grid-template-columns: 180px 1fr;
+      grid-template-columns: 160px 1fr;
     }
 
     .fr-menu-item img {
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
     }
 
     .fr-calc-row {
@@ -907,14 +870,83 @@
     .fr-info-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .fr-info:nth-child(2) {
+      border-right: 0;
+    }
+
+    .fr-info:nth-child(1),
+    .fr-info:nth-child(2) {
+      border-bottom: 1px solid #ebe8e2;
+    }
   }
 
-  /* =========================
-     MOBILE
-  ========================= */
+  /* MOBILE */
+
+  @media (max-width: 768px) {
+    .fr-hero {
+      min-height: auto;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(247,245,241,.92) 0%,
+          rgba(247,245,241,.82) 45%,
+          rgba(247,245,241,.70) 100%
+        ),
+        url('web/upload/foodrock/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .fr-hero-inner {
+      min-height: auto;
+      padding: 44px 20px 42px;
+    }
+
+    .fr-hero-text {
+      max-width: 100%;
+    }
+
+    .fr-hero h1 {
+      font-size: 38px;
+      line-height: 1.14;
+      text-shadow: 0 2px 14px rgba(255,255,255,.75);
+    }
+
+    .fr-hero p {
+      margin-top: 18px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #111;
+      font-weight: 600;
+      text-shadow: 0 2px 12px rgba(255,255,255,.85);
+    }
+
+    .fr-icon-row {
+      margin-top: 32px;
+      gap: 12px;
+    }
+
+    .fr-icon-item {
+      width: calc(50% - 6px);
+      background: rgba(255,255,255,.72);
+      border-radius: 16px;
+      padding: 12px 8px;
+    }
+
+    .fr-icon-circle {
+      width: 54px;
+      height: 54px;
+      font-size: 23px;
+    }
+
+    .fr-icon-item span {
+      font-size: 12px;
+    }
+  }
 
   @media (max-width: 600px) {
-
     .fr-header-inner {
       padding: 14px;
     }
@@ -924,7 +956,7 @@
     }
 
     .fr-nav {
-      gap: 24px;
+      gap: 22px;
       font-size: 14px;
     }
 
@@ -940,40 +972,12 @@
       border-radius: 20px;
     }
 
-    .fr-hero {
-      background-position: center;
+    .fr-side-title h2 {
+      font-size: 30px;
     }
 
-    .fr-hero-inner {
-      padding: 44px 18px 40px;
-    }
-
-    .fr-hero h1 {
-      font-size: 42px;
-    }
-
-    .fr-hero p {
-      margin-top: 22px;
-      font-size: 17px;
-    }
-
-    .fr-icon-row {
-      margin-top: 38px;
-      gap: 14px;
-    }
-
-    .fr-icon-circle {
-      width: 56px;
-      height: 56px;
-      font-size: 24px;
-    }
-
-    .fr-icon-item strong {
-      font-size: 13px;
-    }
-
-    .fr-icon-item span {
-      font-size: 11px;
+    .fr-side-title p {
+      font-size: 15px;
     }
 
     .fr-split,
@@ -981,35 +985,19 @@
     .fr-calc-panel,
     .fr-delivery-panel {
       padding: 20px;
-      gap: 24px;
-    }
-
-    .fr-side-title h2 {
-      font-size: 34px;
-    }
-
-    .fr-side-title p {
-      font-size: 15px;
+      gap: 22px;
     }
 
     .fr-grid-5 {
       grid-template-columns: 1fr;
     }
 
-    .fr-card img {
-      height: 240px;
-    }
-
     .fr-card h3 {
-      font-size: 28px;
+      font-size: 24px;
     }
 
     .fr-price {
-      font-size: 30px;
-    }
-
-    .fr-care-card img {
-      height: 240px;
+      font-size: 26px;
     }
 
     .fr-diet-card {
@@ -1022,13 +1010,9 @@
       margin-left: 0;
     }
 
-    .fr-tabs button {
-      font-size: 15px;
-    }
-
     .fr-menu-item {
       grid-template-columns: 120px 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
     .fr-menu-item img {
@@ -1036,17 +1020,13 @@
       height: 120px;
     }
 
-    .fr-menu-item div {
-      padding-top: 4px;
-    }
-
     .fr-menu-item h3 {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .fr-menu-item strong {
-      margin-top: 10px;
-      font-size: 24px;
+      margin-top: 8px;
+      font-size: 21px;
     }
 
     .fr-info-grid {
@@ -1055,7 +1035,7 @@
 
     .fr-info {
       border-right: 0;
-      border-bottom: 1px solid #e8e6e2;
+      border-bottom: 1px solid #ebe8e2;
     }
 
     .fr-info:last-child {
@@ -1063,11 +1043,11 @@
     }
 
     .fr-calc-result strong {
-      font-size: 38px;
+      font-size: 34px;
     }
 
     .fr-contact-box strong {
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .fr-modal-box {
@@ -1075,7 +1055,16 @@
     }
 
     .fr-modal-head h3 {
-      font-size: 24px;
+      font-size: 22px;
+    }
+
+    .meal-table {
+      font-size: 13px;
+    }
+
+    .meal-table td,
+    .meal-table tbody th {
+      padding: 12px 10px;
     }
   }
   </style>
@@ -1290,17 +1279,59 @@
 <div class="fr-modal" id="dietModal">
   <div class="fr-modal-dim" data-close="true"></div>
 
-  <div class="fr-modal-box">
+  <div class="fr-modal-box fr-meal-modal">
     <div class="fr-modal-head">
-      <h3 id="modalTitle">식단표</h3>
+      <h3 id="modalTitle">2026년 06월 돌봄 식단표</h3>
       <button type="button" class="fr-modal-close" data-close="true">×</button>
     </div>
 
-    <img id="modalImage" class="fr-modal-img" src="" alt="식단표">
+    <div class="meal-table-wrap">
+      <table class="meal-table">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>월요일</th>
+            <th>화요일</th>
+            <th>수요일</th>
+            <th>목요일</th>
+            <th>금요일</th>
+          </tr>
+        </thead>
 
-    <div class="fr-modal-actions">
-      <a id="modalSave" href="" download>이미지 저장</a>
+        <tbody>
+          <tr>
+            <th>1일</th>
+            <td>돈가스<br>짜장덮밥<br>메시칸샐러드<br>깍두기<br>백미밥</td>
+            <td>소민찌콩나물비빔밥<br>하림가라아게<br>순대채소볶음<br>김치</td>
+            <td class="holiday">지방선거</td>
+            <td>짜장밥<br>용가리튀김<br>제육볶음<br>단무지무침</td>
+            <td>깐쇼새우<br>보쌈&쌈채소<br>감자볶음<br>백미밥</td>
+          </tr>
+
+          <tr>
+            <th>8일</th>
+            <td>삼겹살부추불고기<br>미트볼떡조림<br>어묵잡채<br>깍두기</td>
+            <td>산채비빔밥<br>하림안다리살볶음<br>떡볶이<br>김치</td>
+            <td>안동찜닭<br>타코야끼<br>미역줄기볶음<br>흑미밥</td>
+            <td>스파게티<br>순살파닭<br>오이피클<br>김주먹밥</td>
+            <td>김치볶음밥<br>치즈볼<br>돼지갈비찜<br>참스틱김</td>
+          </tr>
+
+          <tr>
+            <th>15일</th>
+            <td>영양채소볶음밥<br>오징어볶음<br>고구마맛탕<br>김치</td>
+            <td>숙주삼겹살볶음<br>돈가스<br>시금치무침<br>볶음김치</td>
+            <td>주삼불고기<br>함박스테이크<br>연근조림<br>김치</td>
+            <td>오징어튀김<br>고등어구이<br>계란장조림<br>깍두기</td>
+            <td>삼겹살김치찜<br>하림고로케<br>맛살숙주나물<br>김치</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <p class="meal-note">
+      ※ 식재료 수급 상황에 따라 일부 메뉴가 변경될 수 있습니다.
+    </p>
   </div>
 </div>
 
@@ -1407,6 +1438,27 @@
       closeModal();
     }
   };
+  
+  var modal = document.getElementById('dietModal');
+  var modalButtons = document.querySelectorAll('[data-modal]');
+
+  for (var m = 0; m < modalButtons.length; m++) {
+    modalButtons[m].onclick = function () {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  var closeItems = document.querySelectorAll('[data-close]');
+
+  for (var c = 0; c < closeItems.length; c++) {
+    closeItems[c].onclick = closeModal;
+  }
 </script>
 
 </body>
