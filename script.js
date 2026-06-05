@@ -1,6 +1,250 @@
-var tabs=document.querySelectorAll('.fr-tabs button');tabs.forEach(function(btn){btn.addEventListener('click',function(){tabs.forEach(function(b){b.classList.remove('active')});document.querySelectorAll('.fr-tab-content').forEach(function(c){c.classList.remove('active')});btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active')})});
-var menuSelect=document.getElementById('menuSelect'),qtyInput=document.getElementById('qtyInput'),totalPrice=document.getElementById('totalPrice'),minusBtn=document.getElementById('minusBtn'),plusBtn=document.getElementById('plusBtn');function updateTotal(){var price=Number(menuSelect.value||0);var qty=Math.max(1,Number(qtyInput.value||1));qtyInput.value=qty;totalPrice.textContent=(price*qty).toLocaleString()+'원'}if(menuSelect){menuSelect.onchange=updateTotal;qtyInput.oninput=updateTotal;minusBtn.onclick=function(){qtyInput.value=Math.max(1,Number(qtyInput.value)-1);updateTotal()};plusBtn.onclick=function(){qtyInput.value=Number(qtyInput.value)+1;updateTotal()};updateTotal()}
-var mealModal=document.getElementById('mealModal'),mealGrid=document.querySelector('.meal-grid'),mealModalTitle=document.getElementById('mealModalTitle'),mealTitle=document.getElementById('mealTitle'),mealTypeLabel=document.getElementById('mealTypeLabel');
+const MENUS = [
+  {
+    id: "pork-cutlet-tong",
+    category: "통도시락",
+    name: "돈까스 통도시락",
+    price: 6500,
+    description: "돈까스 · 밥 · 비엔나소시지 · 단무지",
+    best: false,
+    bestOrder: null,
+    sort: 1,
+    image: "pork-cutlet-tong.png"
+  },
+  {
+    id: "jeyuk-kimchi-tong",
+    category: "통도시락",
+    name: "제육김치볶음 통도시락",
+    price: 6500,
+    description: "제육김치볶음 · 밥 · 비엔나소시지 · 단무지",
+    best: false,
+    bestOrder: null,
+    sort: 2,
+    image: "jeyuk-kimchi-tong.png"
+  },
+  {
+    id: "ham-friedrice-tong",
+    category: "통도시락",
+    name: "햄야채볶음밥 통도시락",
+    price: 6500,
+    description: "햄야채볶음밥 · 비엔나소시지 · 단무지",
+    best: false,
+    bestOrder: null,
+    sort: 3,
+    image: "ham-friedrice-tong.png"
+  },
+  {
+    id: "shrimp-tong",
+    category: "통도시락",
+    name: "새우볶음밥 통도시락",
+    price: 6500,
+    description: "새우볶음밥 · 비엔나소시지 · 단무지",
+    best: false,
+    bestOrder: null,
+    sort: 4,
+    image: "shrimp-tong.png"
+  },
+  {
+    id: "foodrock-set",
+    category: "정식도시락",
+    name: "푸드락 정식",
+    price: 8000,
+    description: "제육 · 밥 · 국 · 4찬 구성",
+    best: true,
+    bestOrder: 1,
+    sort: 1,
+    image: "foodrock-set.jpg"
+  },
+  {
+    id: "jeyuk-set",
+    category: "정식도시락",
+    name: "제육 정식",
+    price: 9000,
+    description: "제육 · 밥 · 국 · 5찬 구성",
+    best: true,
+    bestOrder: 2,
+    sort: 2,
+    image: "jeyuk-set.jpg"
+  },
+  {
+    id: "pork-cutlet-set",
+    category: "정식도시락",
+    name: "돈까스 정식",
+    price: 9000,
+    description: "돈까스 · 밥 · 국 · 4찬 구성",
+    best: false,
+    bestOrder: null,
+    sort: 3,
+    image: "pork-cutlet-set.jpg"
+  },
+  {
+    id: "beef-bulgogi-set",
+    category: "정식도시락",
+    name: "소불고기 정식",
+    price: 12000,
+    description: "소불고기 · 돈까스 · 국 · 5찬 구성",
+    best: true,
+    bestOrder: 3,
+    sort: 4,
+    image: "beef-bulgogi-set.jpg"
+  }
+];
+
+const IMAGE_BASE_PATH = "web/upload/foodrock/";
+
+function formatPrice(price) {
+  return Number(price).toLocaleString() + "원";
+}
+
+function getImagePath(fileName) {
+  return IMAGE_BASE_PATH + fileName;
+}
+
+function createBestCard(menu) {
+  return `
+    <article class="fr-card">
+      <span class="fr-badge">BEST</span>
+      <img onerror="this.classList.add('is-error')" src="${getImagePath(menu.image)}" alt="${menu.name}">
+      <div class="fr-card-body">
+        <h3>${menu.name}</h3>
+        <p>${menu.description}</p>
+        <div class="fr-price">${formatPrice(menu.price)}</div>
+      </div>
+    </article>
+  `;
+}
+
+function createMenuItem(menu) {
+  return `
+    <article class="fr-menu-item">
+      <img onerror="this.classList.add('is-error')" src="${getImagePath(menu.image)}" alt="${menu.name}">
+      <div>
+        <h3>${menu.name}</h3>
+        <p class="fr-menu-desc">${menu.description}</p>
+        <strong>${formatPrice(menu.price)}</strong>
+      </div>
+    </article>
+  `;
+}
+
+function renderBestMenus() {
+  const bestMenuList = document.getElementById("bestMenuList");
+  if (!bestMenuList) return;
+
+  bestMenuList.innerHTML = MENUS
+    .filter(function(menu) {
+      return menu.best;
+    })
+    .sort(function(a, b) {
+      return (a.bestOrder || 999) - (b.bestOrder || 999);
+    })
+    .map(createBestCard)
+    .join("");
+}
+
+function renderMenuTabs() {
+  const basicList = document.getElementById("basic");
+  const formalList = document.getElementById("formal");
+
+  if (basicList) {
+    basicList.innerHTML = MENUS
+      .filter(function(menu) {
+        return menu.category === "통도시락";
+      })
+      .sort(function(a, b) {
+        return a.sort - b.sort;
+      })
+      .map(createMenuItem)
+      .join("");
+  }
+
+  if (formalList) {
+    formalList.innerHTML = MENUS
+      .filter(function(menu) {
+        return menu.category === "정식도시락";
+      })
+      .sort(function(a, b) {
+        return a.sort - b.sort;
+      })
+      .map(createMenuItem)
+      .join("");
+  }
+}
+
+function renderCalculatorOptions() {
+  const menuSelect = document.getElementById("menuSelect");
+  if (!menuSelect) return;
+
+  menuSelect.innerHTML = MENUS
+    .slice()
+    .sort(function(a, b) {
+      if (a.category === b.category) return a.sort - b.sort;
+      return a.category === "정식도시락" ? -1 : 1;
+    })
+    .map(function(menu) {
+      return `<option value="${menu.price}">${menu.name} · ${formatPrice(menu.price)}</option>`;
+    })
+    .join("");
+}
+
+function initTabs() {
+  const tabs = document.querySelectorAll(".fr-tabs button");
+
+  tabs.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      tabs.forEach(function(tab) {
+        tab.classList.remove("active");
+      });
+
+      document.querySelectorAll(".fr-tab-content").forEach(function(content) {
+        content.classList.remove("active");
+      });
+
+      btn.classList.add("active");
+
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add("active");
+    });
+  });
+}
+
+function initCalculator() {
+  const menuSelect = document.getElementById("menuSelect");
+  const qtyInput = document.getElementById("qtyInput");
+  const totalPrice = document.getElementById("totalPrice");
+  const minusBtn = document.getElementById("minusBtn");
+  const plusBtn = document.getElementById("plusBtn");
+
+  if (!menuSelect || !qtyInput || !totalPrice || !minusBtn || !plusBtn) return;
+
+  function updateTotal() {
+    const price = Number(menuSelect.value || 0);
+    const qty = Math.max(1, Number(qtyInput.value || 1));
+
+    qtyInput.value = qty;
+    totalPrice.textContent = formatPrice(price * qty);
+  }
+
+  menuSelect.addEventListener("change", updateTotal);
+  qtyInput.addEventListener("input", updateTotal);
+
+  minusBtn.addEventListener("click", function() {
+    qtyInput.value = Math.max(1, Number(qtyInput.value) - 1);
+    updateTotal();
+  });
+
+  plusBtn.addEventListener("click", function() {
+    qtyInput.value = Number(qtyInput.value) + 1;
+    updateTotal();
+  });
+
+  updateTotal();
+}
+
+const mealModal = document.getElementById("mealModal");
+const mealGrid = document.querySelector(".meal-grid");
+const mealTitle = document.getElementById("mealTitle");
+const mealTypeLabel = document.getElementById("mealTypeLabel");
+
 var careMeals = [
 ['1일','간장제육볶음<br>색감치즈고로케<br>깻잎찜<br>김치'],
 ['2일','오리훈제볶음<br>깐쇼새우<br>도토리묵무침<br>꼬들단무지무침'],
@@ -30,6 +274,7 @@ var careMeals = [
 ['','','empty'],
 ['','','empty']
 ];
+
 var groupMeals = [
 ['1일','구마감자조도가스<br>훈제오리볶음<br>떡볶이<br>김치'],
 ['2일','어린이날','holiday'],
@@ -59,5 +304,60 @@ var groupMeals = [
 
 ['20일','카레라이스<br>계란스크램블<br>하림살너겟<br>김치']
 ];
-function renderMeals(type){var data=type==='group'?groupMeals:careMeals;mealGrid.innerHTML='<div class="meal-head">월</div><div class="meal-head">화</div><div class="meal-head">수</div><div class="meal-head">목</div><div class="meal-head">금</div>';data.forEach(function(m){var cls=m[2]==='holiday'?' holiday':m[2]==='empty'?' empty':'';mealGrid.innerHTML+='<div class="meal-day'+cls+'">'+(m[0]?'<b>'+m[0]+'</b>':'')+(m[1]?'<p>'+m[1]+'</p>':'')+'</div>'});if(type==='group'){mealTitle.textContent='단체 식단표 예시';mealTypeLabel.textContent='FOODROCK GROUP MEAL SAMPLE'}else{mealTitle.textContent='돌봄 식단표 예시';mealTypeLabel.textContent='FOODROCK CARE MEAL SAMPLE'}}
-document.querySelectorAll('[data-meal-open]').forEach(function(btn){btn.onclick=function(){renderMeals(btn.dataset.mealOpen);mealModal.classList.add('open');document.body.style.overflow='hidden'}});document.querySelectorAll('[data-close]').forEach(function(btn){btn.onclick=function(){mealModal.classList.remove('open');document.body.style.overflow=''}});
+
+function renderMeals(type) {
+  const data = type === "group" ? groupMeals : careMeals;
+
+  mealGrid.innerHTML = `
+    <div class="meal-head">월</div>
+    <div class="meal-head">화</div>
+    <div class="meal-head">수</div>
+    <div class="meal-head">목</div>
+    <div class="meal-head">금</div>
+  `;
+
+  data.forEach(function(meal) {
+    const className = meal[2] === "holiday" ? " holiday" : meal[2] === "empty" ? " empty" : "";
+
+    mealGrid.innerHTML += `
+      <div class="meal-day${className}">
+        ${meal[0] ? "<b>" + meal[0] + "</b>" : ""}
+        ${meal[1] ? "<p>" + meal[1] + "</p>" : ""}
+      </div>
+    `;
+  });
+
+  if (type === "group") {
+    mealTitle.textContent = "단체 식단표 예시";
+    mealTypeLabel.textContent = "FOODROCK GROUP MEAL SAMPLE";
+  } else {
+    mealTitle.textContent = "돌봄 식단표 예시";
+    mealTypeLabel.textContent = "FOODROCK CARE MEAL SAMPLE";
+  }
+}
+
+function initMealModal() {
+  if (!mealModal || !mealGrid || !mealTitle || !mealTypeLabel) return;
+
+  document.querySelectorAll("[data-meal-open]").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      renderMeals(btn.dataset.mealOpen);
+      mealModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  document.querySelectorAll("[data-close]").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      mealModal.classList.remove("open");
+      document.body.style.overflow = "";
+    });
+  });
+}
+
+renderBestMenus();
+renderMenuTabs();
+renderCalculatorOptions();
+initTabs();
+initCalculator();
+initMealModal();
