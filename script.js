@@ -86,6 +86,17 @@ const MENUS = [
     bestOrder: 3,
     sort: 4,
     image: "beef-bulgogi-set.jpg"
+  },
+  {
+    id: "premium-set",
+    category: "정식도시락",
+    name: "프리미엄 정식",
+    price: 22000,
+    description: "소불고기 · 돈까스 · 계절반찬 · 과일 구성",
+    best: false,
+    bestOrder: null,
+    sort: 5,
+    image: "premium-set.jpg"
   }
 ];
 
